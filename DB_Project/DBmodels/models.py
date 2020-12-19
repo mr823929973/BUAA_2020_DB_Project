@@ -13,7 +13,7 @@ class Student(models.Model):
 
 
 class Course(models.Model):
-    Cno = models.IntegerField(primary_key=True)
+    Cno = models.IntegerField(primary_key=True, auto_created=True)
     Cname = models.CharField(unique=True, max_length=20)
     credit = models.IntegerField(default=2)
     v = models.IntegerField(default=3)

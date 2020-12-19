@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path
 from django.conf.urls import url
 
-from . import sth, login, sc
+from . import sth, login, sc, tc
 
 urlpatterns = [
     url(r'^account/$', login.top),
@@ -24,5 +24,7 @@ urlpatterns = [
     url(r'^delete_c/$', sc.delete),
     url(r'^select_c/$', sc.select),
     url(r'^top/$', sth.top),
+    url(r'^add_c/$', tc.add),
+    url(r'^open_c/$', tc.open_c),
     url(r'.*', sth.top),
 ]

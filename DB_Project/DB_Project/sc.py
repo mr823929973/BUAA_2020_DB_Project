@@ -61,7 +61,7 @@ def select(request):
         else:
             SC.objects.create(Sno=s, Cno=t.Cno, TC=t)
             ctx['m1'] = '选课成功！'
-    getSinfo(s, ctx)
+        getSinfo(s, ctx)
     return render(request, "top.html", ctx)
 
 
@@ -78,5 +78,5 @@ def delete(request):
         else:
             sc.delete()
             ctx['m1'] = '退课成功！'
-    getSinfo(s, ctx)
+        getSinfo(s, ctx)
     return render(request, "top.html", ctx)
