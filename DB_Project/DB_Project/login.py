@@ -5,6 +5,16 @@ from django.views.decorators import csrf
 from DBmodels.models import *
 from django.http import HttpResponse
 
+def getManage(ctx):
+    department = Department.objects.all()
+    d_list = []
+    for i in department:
+        one = {}
+        one['Dno'] = i.Dno
+        one['Dname'] = i.Dname
+        d_list.append(one)
+    ctx['d_list'] = d_list
+    ctx['t'] = 'manager'
 
 def getTinfo(t, ctx):
     tc = TC.objects.filter(Tno=t.Tno)
@@ -93,10 +103,11 @@ def login(request):
             else:
                 getTinfo(teacher[0], ctx)
                 return render(request, "top.html", ctx)
-        elif ty == 'manage':
+        elif ty == 'manager':
             if user != "kumomo":
                 ctx['m0'] = '权限密码错误！'
                 return render(request, "login.html", ctx)
             else:
+                getManage(ctx)
                 return render(request, "manage.html", ctx)
     return render(request, "login.html", ctx)
