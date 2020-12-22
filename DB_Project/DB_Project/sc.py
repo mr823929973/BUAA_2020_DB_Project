@@ -49,7 +49,6 @@ def select(request):
         t = TC.objects.filter(pk=t).first()
         s = Student.objects.filter(Sno=s).first()
         sc = SC.objects.filter(Sno=s.Sno, Cno=t.Cno)
-
         al = SC.objects.filter(TC=t).count()
 
         if len(sc) != 0:
