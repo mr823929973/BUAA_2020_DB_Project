@@ -1,20 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1905265_ohknpt3pw6.css">
     <title>登录/注册</title>
 </head>
 <body>
-<form action="/login/" method="post">
-    {% csrf_token %}
-    学工号：
-    <input type="text" name="id"><br>
+    <div class="form-wrapper">
+        <div class="header">
+            Login
+        </div>
+        <form action="/login/" method="post">
+            {% csrf_token %}
+        <div class="input-wrapper">
+        <div class="border-wrapper">
+            <input type="text" name="id" class="border-item" placeholder="学工号">
+        </div>
     <!--        密码：<input type="password" name="password">-->
-    登陆类型：<input type="radio" name="type" value="student" checked>学生
-    <input type="radio" name="type" value="teacher">老师
-    <input type="radio" name="type" value="manager">最终权限
-    <input type="submit" value="登录">
-</form>
-<p>提示信息：{{ m0 }}</p>
+        </div>
+        <div class="icon-wrapper">
+        <input type="radio" name="type" value="student" checked>学生
+        <input type="radio" name="type" value="teacher">老师
+        <input type="radio" name="type" value="manager">最终权限
+        <div>
+        <div class="action">
+            <input type="submit" class="btn" value="登录">
+        </div>
+    </form>
+</div>
+  <!--   <p>提示信息：{{ m0 }}</p> -->
 </body>
 </html>
