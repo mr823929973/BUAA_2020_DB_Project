@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,3 +62,68 @@
 {% endif %}
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>教务管理系统</title>
+</head>
+<body>
+<form action="/top/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="返回首页">
+</form>
+<br>
+<form action="/m_refresh/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="刷新当前页面">
+</form>
+
+{% if t == "manager" %}
+<p>{{m1|default:"最 终 权 限"}}</p>
+
+<form action="/m_delete_all/" method="post">
+        {% csrf_token %}
+        <input type="submit" value="重置所有数据">
+    </form>
+<br>
+<form action="/m_add_student/" method="post">
+    {% csrf_token %}
+    学号：
+    <input type="text" name="Sno"><br>
+    姓名：
+    <input type="text" name="Sname"><br>
+    系：
+    <select name="Dno">
+        {% for i in d_list %}
+        <option value={{i.Dno}}>{{i.Dname}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="录入学生">
+</form>
+<br>
+<form action="/m_add_teacher/" method="post">
+    {% csrf_token %}
+    工号：
+    <input type="text" name="Tno"><br>
+    姓名：
+    <input type="text" name="Tname">
+    <input type="submit" value="录用教师">
+</form>
+<br>
+<form action="/m_add_department/" method="post">
+    {% csrf_token %}
+    系号：
+    <input type="text" name="Dno"><br>
+    系名：
+    <input type="text" name="Dname">
+    <input type="submit" value="增加院系">
+</form>
+
+{% else %}
+<p>没有权限！</p>
+{% endif %}
+</body>
+</html>
+>>>>>>> 3a1c884a7c74afadac15d4f9d9248003419f2a8f
