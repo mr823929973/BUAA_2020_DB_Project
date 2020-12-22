@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>教务管理系统</title>
+</head>
+<body>
+<form action="/top/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="返回首页">
+</form>
+{% if t == "manager" %}
+<p>欢迎老师{{use！</p>
+
+<p>提示信息：{{m1|default:"欢迎来到教务管理系统！"}}</p>
+
+<p>已开课程：</p>
+<table border="1">
+    <tr>
+        <th>课程名</th>
+        <th>开课院系</th>
+        <th>学分</th>
+        <th>选课人数/容量</th>
+        <th>操作</th>
+    </tr>
+    {% for i in tc_list %}
+    <tr>
+        <td>{{i.Cn}}</td>
+        <td>{{i.Dn}}</td>
+        <td>{{i.credit}}</td>
+        <td>{{i.s}}/{{i.v}}</td>
+        <td>
+            没写
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<p>开设课程：</p>
+<form action="/open_c/" method="post">
+    {% csrf_token %}
+    课程名字：
+    <select name="Cno">
+        {% for i in cs_list %}
+        <option value={{i.Cno}}>{{i.Cname}}</option>
+        {% endfor %}
+    </select><br>
+    开课院系：
+    <select name="Dno">
+        {% for i in d_list %}
+        <option value={{i.Dno}}>{{i.Dname}}</option>
+        {% endfor %}
+    </select><br>
+    <input type="hidden" name="user" value={{user.Tno}}>
+    <input type="submit" value="开课">
+</form>
+<br>
+<p>增加课程：</p>
+<form action="/add_c/" method="post">
+    {% csrf_token %}
+    课程名字：
+    <input type="text" name="Cname"><br>
+    课程学分：
+    <input type="text" name="credit"><br>
+    课程容量：
+    <input type="text" name="v"><br>
+    <input type="hidden" name="user" value={{user.Tno}}>
+    <input type="submit" value="增加课程">
+</form>
+
+{% elif t == "student" %}
+<p>这里之后会有一个导航栏，会把后面的功能全部分开</p>
+<ul>
+    <li>
+        <a href="#home">选课</a>
+    </li>
+    <li>
+        <a href="#home">退课</a>
+    </li>
+</ul>
+<p>欢迎学生{{user.Sname}}!</p>
+<p>提示信息：{{m1|default:"欢迎来到教务管理系统！"}}</p>
+<p>已选课程：</p>
+<table border="1">
+    <tr>
+        <th>课程名</th>
+        <th>授课老师</th>
+        <th>成绩</th>
+        <th>操作</th>
+    </tr>
+    {% for i in c_list %}
+    <tr>
+        <td>{{i.Cn}}</td>
+        <td>{{i.Tn}}</td>
+        <td>
+            {% if i.end == True %}}
+            {{i.grade}}
+            {% else %}
+            未结课
+            {% endif %}
+        </td>
+        <td>
+            <form action="/delete_c/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user" value={{user.Sno}}>
+                <input type="hidden" name="course" value={{i.Cno}}>
+                <input type="submit" value="退课">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<p>可选课程：</p>
+<table border="1">
+    <tr>
+        <th>课程名</th>
+        <th>授课老师</th>
+        <th>开课院系</th>
+        <th>学分</th>
+        <th>已选人数/容量</th>
+        <th>操作</th>
+    </tr>
+    {% for i in c_select %}
+    <tr>
+        <td>{{i.Cn}}</td>
+        <td>{{i.Tn}}</td>
+        <td>{{i.Dn}}</td>
+        <td>{{i.credit}}</td>
+        <td>{{i.s}}/{{i.v}}</td>
+        <td>
+            {% if i.s < i.v %}
+            <form action="/select_c/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user" value={{user.Sno}}>
+                <input type="hidden" name="tc" value={{i.tid}}>
+                <input type="submit" value="选课">
+            </form>
+            {% else %}
+            已满
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<p>欢迎访问教务管理系统！</p>
+{% endif %}
+</body>
+</html>
