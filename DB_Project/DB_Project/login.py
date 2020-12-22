@@ -94,5 +94,9 @@ def login(request):
                 getTinfo(teacher[0], ctx)
                 return render(request, "top.html", ctx)
         elif ty == 'manage':
-            if 
+            if user != "kumomo":
+                ctx['m0'] = '权限密码错误！'
+                return render(request, "login.html", ctx)
+            else:
+                return render(request, "manage.html", ctx)
     return render(request, "login.html", ctx)
