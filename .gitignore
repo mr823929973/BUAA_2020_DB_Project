@@ -1,2 +1,4 @@
 Lib
 venv
+.vscode
+Scripts
