@@ -93,4 +93,6 @@ def login(request):
             else:
                 getTinfo(teacher[0], ctx)
                 return render(request, "top.html", ctx)
+        elif ty == 'manage':
+            if 
     return render(request, "login.html", ctx)
