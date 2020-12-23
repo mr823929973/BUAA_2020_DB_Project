@@ -1,0 +1,27 @@
+{% include "tc_nav.html" %}
+
+<p>作业列表：</p>
+<table border="1">
+    <tr>
+        <th>作业标题</th>
+        <th>提交上限</th>
+        <th>提交人数</th>
+        <th>操作</th>
+    </tr>
+    {% for i in hw_list %}
+    <tr>
+        <td>{{i.name}}</td>
+        <td>
+            {% if i.times != 0 %}
+            {{i.times}}
+            {% else %}
+            无上限
+            {% endif %}
+        </td>
+        <td>甚至连提交都还没写</td>
+        <td>
+            批改、修改作业信息、删除作业，但是都还没写
+        </td>
+    </tr>
+    {% endfor %}
+</table>

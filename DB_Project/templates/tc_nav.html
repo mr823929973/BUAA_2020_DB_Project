@@ -1,0 +1,36 @@
+
+
+{% include "t_nav.html" %}
+
+<ul class="nav">
+    <li>
+        <form action="/c_detail/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="tc" value={{tid}}>
+            <input type="submit" value="概览">
+        </form>
+    </li>
+    <li>
+        <form action="/tc_addHW/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="tc" value={{tid}}>
+            <input type="submit" value="发布作业">
+        </form>
+    </li>
+    <li>
+        <form action="/tc_lookHW/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="tc" value={{tid}}>
+            <input type="submit" value="作业列表">
+        </form>
+    </li>
+
+    <li>
+        <form action="/tc_free/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="tc" value={{tid}}>
+            <input type="submit" value="免修审批">
+        </form>
+    </li>
+</ul>
+<br>

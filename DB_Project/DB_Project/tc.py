@@ -4,38 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators import csrf
 from DBmodels.models import *
 from django.http import HttpResponse
-import random
-
-
-def getCno():
-    i = random.randint(0, 100000)
-    while len(Course.objects.filter(Cno=i)) != 0:
-        i = random.randint(0, 100000)
-    return i
-
-
-def getTinfo(t, ctx):
-    tc = TC.objects.filter(Tno=t.Tno)
-    tc_list = []
-    for i in tc:
-        one = {}
-        one['Cno'] = i.Cno.Cno
-        one['Tn'] = i.Tno.Tname
-        one['Tno'] = i.Tno.Tno
-        one['Cn'] = i.Cno.Cname
-        one['Dno'] = i.Dno.Dno
-        one['Dn'] = i.Dno.Dname
-        one['credit'] = i.Cno.credit
-        one['tid'] = i.pk
-        one['v'] = i.Cno.v
-        one['s'] = SC.objects.filter(TC=i.pk).count()
-        tc_list.append(one)
-
-    ctx['tc_list'] = tc_list
-    ctx['d_list'] = Department.objects.all()
-    ctx['cs_list'] = Course.objects.all()
-    ctx['t'] = 'teacher'
-    ctx['user'] = t
+from . import ctxf
 
 
 def add(request):
@@ -51,7 +20,7 @@ def add(request):
         else:
             Course.objects.create(Cname=Cname, credit=credit, v=v, Cno=getCno())
             ctx['m1'] = '成功增加课程！'
-        getTinfo(t, ctx)
+        ctxf.getTinfo(t, ctx)
     return render(request, "t_add.html", ctx)
 
 
@@ -70,5 +39,24 @@ def open_c(request):
         else:
             TC.objects.create(Cno=c, Dno=d, Tno=t)
             ctx['m1'] = '成功开设课程！'
-        getTinfo(t, ctx)
+        ctxf.getTinfo(t, ctx)
     return render(request, "t_add.html", ctx)
+
+
+def add_HW(request):
+    ctx = {}
+    if request.POST:
+        name = request.POST['name']
+        question = request.POST['question']
+        ift = request.POST.getlist('ift')
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+
+        if 'yes' in ift:
+            times = request.POST['times']
+            HW.objects.create(name=name, question=question, times=times, TC=tc)
+        else:
+            HW.objects.create(name=name, question=question, times=0, TC=tc)
+        ctx['m1'] = '成功发布作业！'
+        ctxf.getTCinfo(tc, ctx)
+    return render(request, "tc_lookHW.html", ctx)

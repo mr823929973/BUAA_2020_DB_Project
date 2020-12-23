@@ -1,0 +1,22 @@
+ul.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.nav li {
+    padding: 14px 16px;
+    float: left;
+}
+
+ul.nav li.right {
+    float: right;
+}
+
+/*ul.nav input {*/
+/*    margin: 0px;*/
+/*    padding: 0px;*/
+/*    border: 0px;*/
+/*    outline: none;*/
+/*}*/

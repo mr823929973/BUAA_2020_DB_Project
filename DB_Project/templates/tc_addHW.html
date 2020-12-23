@@ -1,0 +1,21 @@
+{% include "tc_nav.html" %}
+
+<form action="/add_HW/" method="post">
+    {% csrf_token %}
+    作业标题：<br>
+    <textarea rows="2" cols="15" name="name">
+    </textarea>
+    <br>
+    作业内容：<br>
+    <textarea rows="10" cols="15" name="question">
+    </textarea>
+    <br>
+    <input type="checkbox" name="ift" value="yes">
+    限制提交次数<br>
+    限制次数：<br>
+    <input type="input" name="times">
+    <input type="hidden" name="tc" value={{tid}}>
+    <input type="submit" value="发布作业">
+</form>
+
+

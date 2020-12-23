@@ -1,13 +1,3 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>教务管理系统</title>
-    <link rel="stylesheet" href="{% static 'css/global.css' %}">
-
-</head>
-<body>
 
 {% include "t_nav.html" %}
 
@@ -42,6 +32,3 @@
     <input type="hidden" name="user" value={{user.Tno}}>
     <input type="submit" value="增加课程">
 </form>
-
-</body>
-</html>

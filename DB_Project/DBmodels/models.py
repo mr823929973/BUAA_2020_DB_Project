@@ -36,8 +36,54 @@ class SC(models.Model):
     free = models.BooleanField(default=False)
     end = models.BooleanField(default=False)
     grade = models.IntegerField(default=60)
+    daily = models.IntegerField(default=60)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
 
 
-# class HW(models.Model):
-#     TC = models.ForeignKey("TC", on_delete=models.CASCADE)
+class HW(models.Model):
+    TC = models.ForeignKey("TC", on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
+    question = models.CharField(max_length=50)
+    times = models.IntegerField(default=0)
+
+
+class HWD(models.Model):
+    HW = models.ForeignKey("HW", on_delete=models.CASCADE)
+    Sno = models.ForeignKey("Student", on_delete=models.CASCADE)
+    content = models.CharField(max_length=50)
+    read = models.BooleanField(default=False)
+    point = models.FloatField(default=6)
+    back = models.CharField(max_length=50)
+
+
+class Tutor(models.Model):
+    TC = models.ForeignKey("TC", on_delete=models.CASCADE)
+    Sno = models.ForeignKey("Student", on_delete=models.CASCADE)
+
+
+class FreeApply(models.Model):
+    SC = models.ForeignKey("SC", on_delete=models.CASCADE)
+    read = models.BooleanField(default=False)
+    accept = models.BooleanField(default=False)
+
+
+class Plan(models.Model):
+    Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
+
+
+class PlanD(models.Model):
+    Pno = models.ForeignKey("Plan", on_delete=models.CASCADE)
+    Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
+
+
+class Remark(models.Model):
+    SC = models.ForeignKey("SC", on_delete=models.CASCADE)
+    p0 = models.IntegerField(default=5)
+    p1 = models.IntegerField(default=5)
+    p2 = models.IntegerField(default=5)
+    p3 = models.IntegerField(default=5)
+    p4 = models.IntegerField(default=5)
+    p5 = models.IntegerField(default=5)
+    r = models.CharField(max_length=50)
+    rec = models.BooleanField(default=True)
+
