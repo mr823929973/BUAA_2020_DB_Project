@@ -65,6 +65,7 @@ class FreeApply(models.Model):
     SC = models.ForeignKey("SC", on_delete=models.CASCADE)
     read = models.BooleanField(default=False)
     accept = models.BooleanField(default=False)
+    reason = models.CharField(max_length=30)
 
 
 class Plan(models.Model):

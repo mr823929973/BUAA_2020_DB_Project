@@ -20,11 +20,10 @@
             {% endif %}
         </td>
         <td>
-            <form action="/delete_c/" method="post">
+            <form action="/sc_detail/" method="post">
                 {% csrf_token %}
-                <input type="hidden" name="user" value={{user.Sno}}>
-                <input type="hidden" name="course" value={{i.Cno}}>
-                <input type="submit" value="退课">
+                <input type="hidden" name="sc" value={{i.scid}}>
+                <input type="submit" value="详情">
             </form>
         </td>
     </tr>

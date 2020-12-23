@@ -35,10 +35,10 @@ def select(request):
 def delete(request):
     ctx = {}
     if request.POST:
-        s = request.POST['user']
-        c = request.POST['course']
+        sc = request.POST['sc']
+        sc = SC.objects.filter(pk=sc)
+        s = request.POST['s']
         s = Student.objects.filter(Sno=s).first()
-        sc = SC.objects.filter(Sno=s.Sno, Cno=c)
         if len(sc) == 0:
             ctx['m1'] = '该学生没有选择该课，无法退课！'
         else:
@@ -46,3 +46,22 @@ def delete(request):
             ctx['m1'] = '退课成功！'
         ctxf.getSinfo(s, ctx)
     return render(request, "s_course.html", ctx)
+
+
+def free_apply(request):
+    ctx = {}
+    if request.POST:
+        sc = request.POST['sc']
+        reason = request.POST['reason']
+
+        sc = SC.objects.filter(pk=sc).first()
+
+        conflict = FreeApply.objects.filter(SC=sc)
+
+        if len(conflict) != 0:
+            ctx['m1'] = '已经申请过了，不能重复申请！'
+        else:
+            FreeApply.objects.create(SC=sc, reason=reason)
+            ctx['m1'] = '免修申请已提交！'
+        ctxf.getSCinfo(sc, ctx)
+    return render(request, "sc_top.html", ctx)

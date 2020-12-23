@@ -35,6 +35,42 @@ def getTinfo(t, ctx):
     ctx['user'] = t
 
 
+def getSinfo(s, ctx):
+    sc = SC.objects.filter(Sno=s.Sno)
+    had = []
+    had_Cno = []
+    can = []
+    for i in sc:
+        one = {}
+        one['Cn'] = i.TC.Cno.Cname
+        one['Cno'] = i.TC.Cno.Cno
+        one['Tn'] = i.TC.Tno.Tname
+        one['grade'] = i.grade
+        one['end'] = i.end
+        one['scid'] = i.pk
+        had_Cno.append(i.TC.Cno.Cno)
+        had.append(one)
+    tc = TC.objects.filter(Dno=s.Dno)
+    for i in tc:
+        if i.Cno.Cno not in had_Cno:
+            one = {}
+            one['Cno'] = i.Cno.Cno
+            one['Tn'] = i.Tno.Tname
+            one['Tno'] = i.Tno.Tno
+            one['Cn'] = i.Cno.Cname
+            one['Dno'] = i.Dno.Dno
+            one['Dn'] = i.Dno.Dname
+            one['credit'] = i.Cno.credit
+            one['tid'] = i.pk
+            one['v'] = i.Cno.v
+            one['s'] = SC.objects.filter(TC=i.pk).count()
+            can.append(one)
+    ctx['c_list'] = had
+    ctx['c_select'] = can
+    ctx['t'] = 'student'
+    ctx['user'] = s
+
+
 def getTCinfo(tc, ctx):
     ctx['C'] = tc.Cno
     ctx['D'] = tc.Dno
@@ -58,39 +94,24 @@ def getTCinfo(tc, ctx):
     #     one = {}
     ctx['hw_list'] = hw_list
 
-def getSinfo(s, ctx):
-    sc = SC.objects.filter(Sno=s.Sno)
-    had = []
-    had_Cno = []
-    can = []
-    for i in sc:
-        one = {}
-        one['Cn'] = i.TC.Cno.Cname
-        one['Cno'] = i.TC.Cno.Cno
-        one['Tn'] = i.TC.Tno.Tname
-        one['grade'] = i.grade
-        one['end'] = i.end
-        had_Cno.append(i.TC.Cno.Cno)
-        had.append(one)
-    tc = TC.objects.filter(Dno=s.Dno)
-    for i in tc:
-        if i.Cno.Cno not in had_Cno:
-            one = {}
-            one['Cno'] = i.Cno.Cno
-            one['Tn'] = i.Tno.Tname
-            one['Tno'] = i.Tno.Tno
-            one['Cn'] = i.Cno.Cname
-            one['Dno'] = i.Dno.Dno
-            one['Dn'] = i.Dno.Dname
-            one['credit'] = i.Cno.credit
-            one['tid'] = i.pk
-            one['v'] = i.Cno.v
-            one['s'] = SC.objects.filter(TC=i.pk).count()
-            can.append(one)
-    ctx['c_list'] = had
-    ctx['c_select'] = can
-    ctx['t'] = 'student'
-    ctx['user'] = s
+
+def getSCinfo(sc, ctx):
+    ctx['T'] = sc.TC.Tno
+    ctx['TC'] = sc.TC
+    ctx['S'] = sc.Sno
+    ctx['D'] = sc.TC.Dno
+    ctx['user'] = sc.Sno
+    ctx['sc'] = sc
+    ctx['scid'] = sc.pk
+    ctx['C'] = sc.TC.Cno
+    ctx['se'] = SC.objects.filter(TC=sc.TC).count()
+
+    hwl = HW.objects.filter(TC=sc.TC)
+    hw_list = hwl
+    # for i in hwl:
+    #     one = {}
+    ctx['hw_list'] = hw_list
+
 
 
 def getManage(ctx):

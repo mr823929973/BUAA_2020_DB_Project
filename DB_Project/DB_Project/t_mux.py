@@ -16,7 +16,7 @@ def t_top(request):
     return render(request, "t_top.html", ctx)
 
 
-def c_detail(request):
+def tc_detail(request):
     ctx = {}
     if request.POST:
         tc = request.POST['tc']

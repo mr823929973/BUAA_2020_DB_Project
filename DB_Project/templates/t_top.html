@@ -16,7 +16,7 @@
         <td>{{i.credit}}</td>
         <td>{{i.s}}/{{i.v}}</td>
         <td>
-            <form action="/c_detail/" method="post">
+            <form action="/tc_detail/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="tc" value={{i.tid}}>
                 <input type="submit" value="详情">

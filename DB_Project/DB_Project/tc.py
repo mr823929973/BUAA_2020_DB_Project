@@ -52,11 +52,18 @@ def add_HW(request):
         tc = request.POST['tc']
         tc = TC.objects.filter(pk=tc).first()
 
-        if 'yes' in ift:
-            times = request.POST['times']
-            HW.objects.create(name=name, question=question, times=times, TC=tc)
+        conflict = HW.objects.filter(name=name, TC=tc)
+
+        if len(conflict) != 0:
+            ctx['m1'] = '课内已有同名作业！'
+            ctxf.getTCinfo(tc, ctx)
+            return render(request, "tc_addHW.html", ctx)
         else:
-            HW.objects.create(name=name, question=question, times=0, TC=tc)
-        ctx['m1'] = '成功发布作业！'
+            if 'yes' in ift:
+                times = request.POST['times']
+                HW.objects.create(name=name, question=question, times=times, TC=tc)
+            else:
+                HW.objects.create(name=name, question=question, times=0, TC=tc)
+            ctx['m1'] = '成功发布作业！'
         ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_lookHW.html", ctx)

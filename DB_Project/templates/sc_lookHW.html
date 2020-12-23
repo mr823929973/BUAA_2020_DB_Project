@@ -1,0 +1,30 @@
+{% include "sc_nav.html" %}
+
+<p>作业列表：</p>
+<table border="1">
+    <tr>
+        <th>作业标题</th>
+        <th>提交次数</th>
+        <th>作业得分</th>
+        <th>操作</th>
+    </tr>
+    {% for i in hw_list %}
+    <tr>
+        <td>{{i.name}}</td>
+        <td>
+            XX/
+            {% if i.times != 0 %}
+            {{i.times}}
+            {% else %}
+            ∞
+            {% endif %}
+        </td>
+        <td>
+            未提交、已提交、XX分，但是都还没写
+        </td>
+        <td>
+            提交、修改等等，但是都还没写
+        </td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,21 @@
+
+
+{% include "s_nav.html" %}
+
+<ul class="nav">
+    <li>
+        <form action="/sc_detail/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="sc" value={{scid}}>
+            <input type="submit" value="概览">
+        </form>
+    </li>
+    <li>
+        <form action="/sc_lookHW/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="sc" value={{scid}}>
+            <input type="submit" value="作业列表">
+        </form>
+    </li>
+</ul>
+<br>

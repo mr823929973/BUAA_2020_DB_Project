@@ -8,6 +8,26 @@ from django.http import HttpResponse
 from . import ctxf
 
 
+def delete_all():
+    FreeApply.objects.all().delete()
+    Tutor.objects.all().delete()
+    HWD.objects.all().delete()
+    HW.objects.all().delete()
+    SC.objects.all().delete()
+    TC.objects.all().delete()
+    Student.objects.all().delete()
+    Department.objects.all().delete()
+    Course.objects.all().delete()
+    Teacher.objects.all().delete()
+
+
+def initial():
+    Teacher.objects.create(Tno=99999, Tname='Tony')
+    Course.objects.create(Cno=119, Cname='海阳秧歌初级', credit=100, v=100)
+    d = Department.objects.create(Dno=114514, Dname='阿兹卡班')
+    Student.objects.create(Sno=1919810, Sname='魔仙小月', Dno=d)
+
+
 def m_refresh(request):
     ctx = {}
     ctxf.getManage(ctx)
@@ -17,17 +37,8 @@ def m_refresh(request):
 def m_delete_all(request):
     ctx = {}
     if request.POST:
-        SC.objects.all().delete()
-        TC.objects.all().delete()
-        Student.objects.all().delete()
-        Department.objects.all().delete()
-        Course.objects.all().delete()
-        Teacher.objects.all().delete()
-
-        Teacher.objects.create(Tno=99999, Tname='Tony')
-        Course.objects.create(Cno=119, Cname='海阳秧歌初级', credit=100, v=100)
-        d = Department.objects.create(Dno=114514, Dname='阿兹卡班')
-        Student.objects.create(Sno=1919810, Sname='魔仙小月', Dno=d)
+        delete_all()
+        initial()
         ctx['m1'] = '重 置 成 功！'
     ctxf.getManage(ctx)
     return render(request, "manage.html", ctx)
@@ -73,12 +84,7 @@ def m_add_department(request):
 
 def m_delete_all_t(request):
     ctx = {}
-    SC.objects.all().delete()
-    TC.objects.all().delete()
-    Student.objects.all().delete()
-    Department.objects.all().delete()
-    Course.objects.all().delete()
-    Teacher.objects.all().delete()
+    delete_all()
     ctx['m1'] = '我们的王回来了！！！'
     ctxf.getManage(ctx)
     return render(request, "manage.html", ctx)
