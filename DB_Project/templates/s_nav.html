@@ -11,15 +11,56 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            border: 1px solid #555;
         }
 
-        ul.nav li {
+        ul.nav li.left {
             padding: 14px 16px;
             float: left;
+            text-align: center;
+            border-left: 1px solid #bbb;
+            border-right: 1px solid #bbb;
         }
 
         ul.nav li.right {
+            padding: 14px 16px;
             float: right;
+            text-align: center;
+            border-left: 1px solid #bbb;
+            border-right: 1px solid #bbb;
+        }
+
+        ul.nav li.none {
+            padding: 14px 16px;
+            float: left;
+            font-size: 20px;
+            text-align: center;
+            border-right = none;
+            border-left = none;
+        }
+
+        form.top {
+            border: 0px;
+        }
+
+        input{
+            font-size: 15px;
+border:none;//去除边框
+border-radius:0;
+border-bottom:#8D8D8D 1px solid;
+box-shadow: 0px 0px 0px 0px;
+            outline-color: none ;
+	        outline-style: none ;
+	        outline-width: 0px ;
+	        border: none ;
+	        border-style: none ;
+            box-shadow: 0px 0px 0px 0px;
+	        text-shadow: none ;
+            -webkit-box-shadow: 0 0 0 ;
+	        -webkit-appearance: none ;
+            -webkit-user-select: text ;
+	        outline-color: none ;
+	        box-shadow: none;
         }
 
         /*ul.nav input {*/
@@ -28,55 +69,60 @@
         /*    border: 0px;*/
         /*    outline: none;*/
         /*}*/
+
+
     </style>
 </head>
 <body>
 
 <ul class="nav">
-    <li>
-        <form action="/top/" method="post">
+    <li class="left">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" value={{Sno}}>
             <input type="submit" value="首页">
         </form>
     </li>
-    <li>
-        <form action="/s_select/" method="post">
+    <li class="left">
+        <form action="/s_select/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="选课">
         </form>
     </li>
-    <li>
-        <form action="/s_course/" method="post">
+    <li class="left">
+        <form action="/s_course/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="已选课程">
         </form>
     </li>
-    <li>
-        <form action="/top/" method="post">
+    <li class="left">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="submit" value="评教">
         </form>
     </li>
-    <li>
-        <form action="/top/" method="post">
+    <li class="left">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="submit" value="学籍异动">
         </form>
+    </li>
+    <li class="none">
+        J务管理系统
     </li>
     <li class="right">
         当前用户：{{user.Sname}}
     </li>
     <li class="right">
-        <form action="/top/" method="post">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="submit" value="助教页面">
         </form>
     </li>
     <li class="right">
-        <form action="/top/" method="post">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="submit" value="注销">
         </form>

@@ -12,7 +12,7 @@
 {% include "s_nav.html" %}
 
 <p>已选课程：</p>
-<table border="1"  class="altrowstable">
+<table border="1"  class="altrowstable" width="1000px">
     <tr>
         <th>课程名</th>
         <th>授课老师</th>
@@ -20,7 +20,7 @@
         <th>操作</th>
     </tr>
     {% for i in c_list %}
-    <tr>
+    <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
         <td>{{i.Cn}}</td>
         <td>{{i.Tn}}</td>
         <td>
