@@ -11,38 +11,41 @@
 <body>
 
 <ul class="nav">
-    <li>
-        <form action="/top/" method="post">
+    <li class="left">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" value={{Sno}}>
             <input type="submit" value="首页">
         </form>
     </li>
-    <li>
-        <form action="/s_select/" method="post">
+    <li class="left">
+        <form action="/s_select/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="选课">
         </form>
     </li>
-    <li>
-        <form action="/s_course/" method="post">
+    <li class="left">
+        <form action="/s_course/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="已选课程">
         </form>
     </li>
-    <li>
-        <form action="/top/" method="post">
+    <li class="left">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="submit" value="评教">
         </form>
     </li>
-    <li>
-        <form action="/top/" method="post">
+    <li class="left">
+        <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="submit" value="学籍异动">
         </form>
+    </li>
+    <li class="none">
+        J务管理系统
     </li>
     <li class="right">
         <form action="/top/" method="post">

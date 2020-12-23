@@ -1,9 +1,13 @@
+table {
+    margin:0px auto;
+}
+
 table.altrowstable {
     font-family: verdana,arial,sans-serif;
-    font-size:11px;
-    color:#333333;
-    border-width: 1px;
-    border-color: #a9c6c9;
+    font-size:20px;
+    color:black;  /*font color*/
+    border-width: 2px;
+    border-color: rebeccapurple;
     border-collapse: collapse;
 }
 table.altrowstable th {
@@ -26,25 +30,25 @@ table.altrowstable td {
 }
 
 
-table.hovertable {
+table.table {
     font-family: verdana,arial,sans-serif;
-    font-size:11px;
+    font-size:20px;
     color:#333333;
     border-width: 1px;
-    border-color: #999999;
+    border-color: rebeccapurple;
     border-collapse: collapse;
 }
-table.hovertable th {
-    background-color:#c3dde0;
+table.table th {
+    background-color:#5980fd;
     border-width: 1px;
     padding: 8px;
     border-style: solid;
     border-color: #a9c6c9;
 }
-table.hovertable tr {
+table.table tr {
     background-color:#d4e3e5;
 }
-table.hovertable td {
+table.table td {
     border-width: 1px;
     padding: 8px;
     border-style: solid;
