@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^m_add_department/$', manage.m_add_department),
     url(r'^m_refresh/$', manage.m_refresh),
     url(r'^m_delete_all/$', manage.m_delete_all),
+    url(r'^initial/$', manage.m_delete_all_t),
     url(r'^open_c/$', tc.open_c),
     url(r'.*', sth.top),
 ]

@@ -37,3 +37,7 @@ class SC(models.Model):
     end = models.BooleanField(default=False)
     grade = models.IntegerField(default=60)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
+
+
+# class HW(models.Model):
+#     TC = models.ForeignKey("TC", on_delete=models.CASCADE)
