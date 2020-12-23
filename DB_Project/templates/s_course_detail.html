@@ -1,15 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>教务管理系统</title>
-
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sheet.css' %}">
 </head>
 <body>
 
 {% include "s_top.html" %}
 
-<table border="1">
+<table border="1" class="altrowstable">
     <tr>
         <th>课程名</th>
         <th>授课老师</th>
