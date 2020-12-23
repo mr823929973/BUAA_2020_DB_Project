@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>教务管理系统</title>
+    <style>
+        ul.nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        ul.nav li {
+            padding: 14px 16px;
+            float: left;
+        }
+
+        ul.nav li.right {
+            float: right;
+        }
+
+        /*ul.nav input {*/
+        /*    margin: 0px;*/
+        /*    padding: 0px;*/
+        /*    border: 0px;*/
+        /*    outline: none;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<ul class="nav">
+    <li>
+        <form action="/top/" method="post">
+            {% csrf_token %}
+            <input type="hidden" value={{Sno}}>
+            <input type="submit" value="首页">
+        </form>
+    </li>
+    <li>
+        <form action="/s_select/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="Sno" value={{user.Sno}}>
+            <input type="submit" value="选课">
+        </form>
+    </li>
+    <li>
+        <form action="/s_course/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="Sno" value={{user.Sno}}>
+            <input type="submit" value="已选课程">
+        </form>
+    </li>
+    <li>
+        <form action="/top/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="评教">
+        </form>
+    </li>
+    <li>
+        <form action="/top/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="学籍异动">
+        </form>
+    </li>
+    <li class="right">
+        当前用户：{{user.Sname}}
+    </li>
+    <li class="right">
+        <form action="/top/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="助教页面">
+        </form>
+    </li>
+    <li class="right">
+        <form action="/top/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="注销">
+        </form>
+    </li>
+</ul>
+<p>提示信息：{{m1|default:"欢迎来到教务管理系统！"}}</p>
+
+
+</body>
+</html>

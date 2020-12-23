@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>教务管理系统</title>
+    <style>
+        ul.nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        ul.nav li {
+            padding: 14px 16px;
+            float: left;
+        }
+
+        ul.nav li.right {
+            float: right;
+        }
+
+        /*ul.nav input {*/
+        /*    margin: 0px;*/
+        /*    padding: 0px;*/
+        /*    border: 0px;*/
+        /*    outline: none;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<ul class="nav">
+    <li>
+        <form action="/t_top/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="Tno" value={{user.Tno}}>
+            <input type="submit" value="已开课程">
+        </form>
+    </li>
+    <li>
+        <form action="/t_add/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="Tno" value={{user.Tno}}>
+            <input type="submit" value="开设/增加课程">
+        </form>
+    </li>
+    <li>
+        <form action="/top/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="审批事务">
+        </form>
+    </li>
+
+    <li class="right">
+        当前用户：{{user.Tname}}
+    </li>
+    <li class="right">
+        <form action="/top/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="注销">
+        </form>
+    </li>
+</ul>
+<p>提示信息：{{m1|default:"欢迎来到教务管理系统！"}}</p>
+
+
+</body>
+</html>

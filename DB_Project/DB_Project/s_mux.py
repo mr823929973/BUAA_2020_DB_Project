@@ -41,28 +41,21 @@ def getSinfo(s, ctx):
     ctx['user'] = s
 
 
-def select(request):
+def s_select(request):
     ctx = {}
     if request.POST:
-        s = request.POST['user']
-        t = request.POST['tc']
-        t = TC.objects.filter(pk=t).first()
+        s = request.POST['Sno']
         s = Student.objects.filter(Sno=s).first()
-        sc = SC.objects.filter(Sno=s.Sno, Cno=t.Cno)
-        al = SC.objects.filter(TC=t).count()
-
-        if len(sc) != 0:
-            ctx['m1'] = '该学生已选择过同名的课，不能重复选课！'
-        elif t.Dno != s.Dno:
-            ctx['m1'] = '只能选择本系开设的课程！'
-        elif t.Cno.v <= al:
-            ctx['m1'] = '人数已满，选课失败！'
-        else:
-            SC.objects.create(Sno=s, Cno=t.Cno, TC=t)
-            ctx['m1'] = '选课成功！'
         getSinfo(s, ctx)
     return render(request, "s_select.html", ctx)
 
+def s_course(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        s = Student.objects.filter(Sno=s).first()
+        getSinfo(s, ctx)
+    return render(request, "s_course.html", ctx)
 
 # 接收POST请求数据
 def delete(request):
@@ -78,4 +71,4 @@ def delete(request):
             sc.delete()
             ctx['m1'] = '退课成功！'
         getSinfo(s, ctx)
-    return render(request, "s_course.html", ctx)
+    return render(request, "top.html", ctx)

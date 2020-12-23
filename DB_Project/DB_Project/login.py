@@ -94,7 +94,7 @@ def login(request):
                 return render(request, "login.html", ctx)
             else:
                 getSinfo(student[0], ctx)
-                return render(request, "top.html", ctx)
+                return render(request, "s_top.html", ctx)
         elif ty == 'teacher':
             teacher = Teacher.objects.filter(Tno=user)
             if len(teacher) == 0:
@@ -102,7 +102,7 @@ def login(request):
                 return render(request, "login.html", ctx)
             else:
                 getTinfo(teacher[0], ctx)
-                return render(request, "top.html", ctx)
+                return render(request, "t_top.html", ctx)
         elif ty == 'manager':
             if user != "kumomo":
                 ctx['m0'] = '权限密码错误！'

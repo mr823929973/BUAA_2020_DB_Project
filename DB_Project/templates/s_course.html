@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>教务管理系统</title>
+
+</head>
+<body>
+
+{% include "s_nav.html" %}
+
+<p>已选课程：</p>
+<table border="1">
+    <tr>
+        <th>课程名</th>
+        <th>授课老师</th>
+        <th>成绩</th>
+        <th>操作</th>
+    </tr>
+    {% for i in c_list %}
+    <tr>
+        <td>{{i.Cn}}</td>
+        <td>{{i.Tn}}</td>
+        <td>
+            {% if i.end == True %}}
+            {{i.grade}}
+            {% else %}
+            未结课
+            {% endif %}
+        </td>
+        <td>
+            <form action="/delete_c/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user" value={{user.Sno}}>
+                <input type="hidden" name="course" value={{i.Cno}}>
+                <input type="submit" value="退课">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>

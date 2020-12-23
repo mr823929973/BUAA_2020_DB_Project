@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>教务管理系统</title>
+
+</head>
+<body>
+
+{% include "t_nav.html" %}
+
+<p>已开课程：</p>
+<table border="1">
+    <tr>
+        <th>课程名</th>
+        <th>开课院系</th>
+        <th>学分</th>
+        <th>选课人数/容量</th>
+        <th>操作</th>
+    </tr>
+    {% for i in tc_list %}
+    <tr>
+        <td>{{i.Cn}}</td>
+        <td>{{i.Dn}}</td>
+        <td>{{i.credit}}</td>
+        <td>{{i.s}}/{{i.v}}</td>
+        <td>
+            没写
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

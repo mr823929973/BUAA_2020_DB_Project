@@ -38,37 +38,19 @@ def getTinfo(t, ctx):
     ctx['user'] = t
 
 
-def add(request):
+def t_top(request):
     ctx = {}
     if request.POST:
-        Cname = request.POST['Cname']
-        credit = request.POST['credit']
-        t = request.POST['user']
+        t = request.POST['Tno']
         t = Teacher.objects.filter(Tno=t).first()
-        v = request.POST['v']
-        if len(Course.objects.filter(Cname=Cname)) != 0:
-            ctx['m1'] = '已有同名课程，增加失败！'
-        else:
-            Course.objects.create(Cname=Cname, credit=credit, v=v, Cno=getCno())
-            ctx['m1'] = '成功增加课程！'
         getTinfo(t, ctx)
-    return render(request, "t_add.html", ctx)
+    return render(request, "t_top.html", ctx)
 
 
-def open_c(request):
+def t_add(request):
     ctx = {}
     if request.POST:
-        Cno = request.POST['Cno']
-        c = Course.objects.filter(Cno=Cno).first()
-        Dno = request.POST['Dno']
-        d = Department.objects.filter(Dno=Dno).first()
-        t = request.POST['user']
+        t = request.POST['Tno']
         t = Teacher.objects.filter(Tno=t).first()
-
-        if len(TC.objects.filter(Cno=Cno, Dno=Dno, Tno=t.Tno)) != 0:
-            ctx['m1'] = '已经在该院系开设过相同课程，开课失败！'
-        else:
-            TC.objects.create(Cno=c, Dno=d, Tno=t)
-            ctx['m1'] = '成功开设课程！'
         getTinfo(t, ctx)
     return render(request, "t_add.html", ctx)

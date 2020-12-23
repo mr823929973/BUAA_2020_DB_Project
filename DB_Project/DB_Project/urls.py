@@ -16,13 +16,17 @@ Including another URLconf
 from django.urls import path
 from django.conf.urls import url
 
-from . import sth, login, sc, tc, manage
+from . import sth, login, sc, tc, manage, s_mux, t_mux
 
 urlpatterns = [
     url(r'^account/$', login.top),
     url(r'^login/$', login.login),
     url(r'^delete_c/$', sc.delete),
+    url(r'^s_select/$', s_mux.s_select),
+    url(r'^t_top/$', t_mux.t_top),
+    url(r'^t_add/$', t_mux.t_add),
     url(r'^select_c/$', sc.select),
+    url(r'^s_course/$', s_mux.s_course),
     url(r'^top/$', sth.top),
     url(r'^add_c/$', tc.add),
     url(r'^m_add_student/$', manage.m_add_student),
