@@ -76,10 +76,11 @@ body {
     line-height: 50px;
     border-radius: 30px;
     cursor: pointer;
+    background-color: #0e92b3;
 }
 
 .form-wrapper .action .btn:hover {
-    background-color: #0e92b3;
+    background-color: wheat;
 }
 
 .form-wrapper .icon-wrapper {
