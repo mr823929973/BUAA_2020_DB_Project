@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1905265_ohknpt3pw6.css">
-    <title>登录/注册</title>
+    <title>J务管理系统</title>
 </head>
 <body>
     <div class="form-wrapper">
         <div class="header">
-            Login
+            J务管理系统
         </div>
         <form action="/login/" method="post">
             {% csrf_token %}
@@ -25,7 +25,7 @@
         <input type="radio" name="type" value="student" checked>学生
         <input type="radio" name="type" value="teacher">老师
         <input type="radio" name="type" value="manager">最终权限
-        <div>
+        </div>
         <div class="action">
             <input type="submit" class="btn" value="登录">
         </div>
