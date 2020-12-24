@@ -3,14 +3,14 @@
 {% include "s_nav.html" %}
 
 <ul class="nav">
-    <li>
+    <li class="left">
         <form action="/sc_detail/" method="post">
             {% csrf_token %}
             <input type="hidden" name="sc" value={{scid}}>
             <input type="submit" value="概览">
         </form>
     </li>
-    <li>
+    <li class="left">
         <form action="/sc_lookHW/" method="post">
             {% csrf_token %}
             <input type="hidden" name="sc" value={{scid}}>

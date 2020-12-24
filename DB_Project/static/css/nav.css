@@ -3,20 +3,55 @@ ul.nav {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    border: 1px solid #555;
 }
 
-ul.nav li {
+ul.nav li.left {
     padding: 14px 16px;
     float: left;
+    text-align: center;
+    border-left: 1px solid #bbb;
+    border-right: 1px solid #bbb;
 }
 
 ul.nav li.right {
+    padding: 14px 16px;
     float: right;
+    text-align: center;
+    border-left: 1px solid #bbb;
+    border-right: 1px solid #bbb;
 }
 
-/*ul.nav input {*/
-/*    margin: 0px;*/
-/*    padding: 0px;*/
-/*    border: 0px;*/
-/*    outline: none;*/
-/*}*/
+ul.nav li.none {
+    padding: 14px 16px;
+    float: left;
+    font-size: 20px;
+    text-align: center;
+    border-right : none;
+    border-left : none;
+}
+
+form.top {
+    border: 0px;
+}
+
+input{
+    font-size: 15px;
+border:none;
+border-radius:0;
+border-bottom:#8D8D8D 1px solid;
+box-shadow: 0px 0px 0px 0px;
+    outline-color: none ;
+    outline-style: none ;
+    outline-width: 0px ;
+    border: none ;
+    border-style: none ;
+    box-shadow: 0px 0px 0px 0px;
+    text-shadow: none ;
+    -webkit-box-shadow: 0 0 0 ;
+    -webkit-appearance: none ;
+    -webkit-user-select: text ;
+    outline-color: none ;
+    box-shadow: none;
+}
+

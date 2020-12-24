@@ -3,21 +3,21 @@
 {% include "t_nav.html" %}
 
 <ul class="nav">
-    <li>
+    <li class="left">
         <form action="/tc_detail/" method="post">
             {% csrf_token %}
             <input type="hidden" name="tc" value={{tid}}>
             <input type="submit" value="概览">
         </form>
     </li>
-    <li>
+    <li class="left">
         <form action="/tc_addHW/" method="post">
             {% csrf_token %}
             <input type="hidden" name="tc" value={{tid}}>
             <input type="submit" value="发布作业">
         </form>
     </li>
-    <li>
+    <li class="left">
         <form action="/tc_lookHW/" method="post">
             {% csrf_token %}
             <input type="hidden" name="tc" value={{tid}}>
@@ -25,7 +25,7 @@
         </form>
     </li>
 
-    <li>
+    <li class="left">
         <form action="/tc_free/" method="post">
             {% csrf_token %}
             <input type="hidden" name="tc" value={{tid}}>

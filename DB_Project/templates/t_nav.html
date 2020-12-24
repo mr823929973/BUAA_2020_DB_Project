@@ -11,21 +11,21 @@
 <body>
 
 <ul class="nav">
-    <li>
+    <li class="left">
         <form action="/t_top/" method="post">
             {% csrf_token %}
             <input type="hidden" name="Tno" value={{user.Tno}}>
             <input type="submit" value="已开课程">
         </form>
     </li>
-    <li>
+    <li class="left">
         <form action="/t_add/" method="post">
             {% csrf_token %}
             <input type="hidden" name="Tno" value={{user.Tno}}>
             <input type="submit" value="开设/增加课程">
         </form>
     </li>
-    <li>
+    <li class="left">
         <form action="/top/" method="post">
             {% csrf_token %}
             <input type="submit" value="审批事务">
