@@ -1,9 +1,9 @@
 {% include "tc_nav.html" %}
 
 <p>学生姓名：{{S.Sname}}</p>
-<p>所属院系：{{T.Tname}}</p>
+<p>所属院系：{{D.Dname}}</p>
 <hr>
-<p>申请理由：{{D.Dname}}</p>
+<p>申请理由：{{reason}}</p>
 <p>处理意见</p>
 
 <form action="/free_solve/" method="post">

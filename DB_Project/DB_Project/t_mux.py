@@ -33,6 +33,7 @@ def tc_free_do(request):
         ctxf.getTCinfo(tc, ctx)
         pk = request.POST['apply']
         pk = FreeApply.objects.filter(pk=pk).first()
+        ctx['reason'] = pk.reason
         ctx['scid'] = pk.SC.pk
         ctx['freeid'] = pk.pk
         ctx['S'] = pk.SC.Sno
