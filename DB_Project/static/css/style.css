@@ -36,14 +36,14 @@ body {
     border: 0;
     width: 100%;
     text-align: center;
-    font-size: 15px;
-    color: #fff;
+    font-size: 17px;
+    color: rgba(177, 212, 241, 0.842);
     outline: none;
 }
 
 .form-wrapper .input-wrapper input::placeholder {
     font-family: "agency fb";
-    text-transform: uppercase;
+    text-transform: uppercas17
 }
 
 .form-wrapper .input-wrapper .border-wrapper {
@@ -75,12 +75,13 @@ body {
     text-align: center;
     line-height: 50px;
     border-radius: 30px;
+    font-size:20px;
     cursor: pointer;
     background-color: #0e92b3;
 }
 
 .form-wrapper .action .btn:hover {
-    background-color: wheat;
+    background-color: rgb(150, 176, 211);
 }
 
 .form-wrapper .icon-wrapper {
@@ -110,3 +111,4 @@ body {
     border-radius: 30px;
     cursor: pointer;
 }
+

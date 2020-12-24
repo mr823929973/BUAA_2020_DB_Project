@@ -3,8 +3,8 @@ ul.nav {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid red;
-    background-color: blueviolet;
+    border: none;
+    background-color: #2e74ad;
     font-size: 20px;
     color: white;
 }
@@ -13,24 +13,24 @@ ul.nav li.left {
     padding: 14px 16px;
     float: left;
     text-align: center;
-    border-left: 1px solid red;
-    border-right: 1px solid red;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 ul.nav li.pic {
     padding: 0px 0px;
     float: left;
     text-align: center;
-    border-left: 1px solid red;
-    border-right: 1px solid red;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 ul.nav li.right {
     padding: 14px 16px;
     float: right;
     text-align: center;
-    border-left: 1px solid red;
-    border-right: 1px solid red;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 ul.nav li.none {
@@ -64,7 +64,7 @@ ul.nav input{
     -webkit-user-select: text ;
     outline-color: none ;
     box-shadow: none;
-    color:greenyellow;
+    color:#FFFFFF;
     background: transparent;
 }
 
