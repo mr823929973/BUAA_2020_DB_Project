@@ -6,13 +6,13 @@
 <form action="/open_c/" method="post">
     {% csrf_token %}
     课程名字：
-    <select name="Cno">
+    <select name="Cno" class="cs-select cs-skin-slide">
         {% for i in cs_list %}
         <option value={{i.Cno}}>{{i.Cname}}</option>
         {% endfor %}
     </select><br>
     开课院系：
-    <select name="Dno">
+    <select name="Dno" class="cs-select cs-skin-slide">
         {% for i in d_list %}
         <option value={{i.Dno}}>{{i.Dname}}</option>
         {% endfor %}
