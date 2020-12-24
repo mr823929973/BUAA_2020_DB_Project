@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path
 from django.conf.urls import url
 
-from . import sth, login, sc, tc, manage, s_mux, t_mux, tutor
+from . import sth, login, sc, tc, manage, s_mux, t_mux, tutor, m_mux
 
 urlpatterns = [
     url(r'^account/$', login.top),
@@ -34,14 +34,26 @@ urlpatterns = [
     url(r'^s_top/$', s_mux.s_top),
     url(r'^top/$', sth.top),
     url(r'^add_c/$', tc.add),
+    url(r'^m_student/$', m_mux.m_student),
+    url(r'^m_teacher/$', m_mux.m_teacher),
+    url(r'^m_top/$', m_mux.m_top),
+    url(r'^m_change_do/$', m_mux.m_change_do),
+    url(r'^m_drop_do/$', m_mux.m_drop_do),
+    url(r'^m_department/$', m_mux.m_department),
+    url(r'^m_apply/$', m_mux.m_apply),
     url(r'^free_apply/$', sc.free_apply),
     url(r'^m_add_student/$', manage.m_add_student),
     url(r'^m_add_teacher/$', manage.m_add_teacher),
     url(r'^m_add_department/$', manage.m_add_department),
     url(r'^m_refresh/$', manage.m_refresh),
+    url(r'^drop_out/$', manage.drop_out),
     url(r'^m_delete_all/$', manage.m_delete_all),
     url(r'^initial/$', manage.m_delete_all_t),
     url(r'^open_c/$', tc.open_c),
+    url(r'^drop_apply/$', sc.drop_apply),
+    url(r'^change_apply/$', sc.change_apply),
+    url(r'^drop_solve/$', manage.drop_solve),
+    url(r'^change_solve/$', manage.change_solve),
     url(r'^tc_lookHW/$', t_mux.tc_lookHW),
     url(r'^sc_doHW/$', s_mux.sc_doHW),
     url(r'^hw_solve/$', sc.hw_solve),

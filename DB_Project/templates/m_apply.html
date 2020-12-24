@@ -1,0 +1,63 @@
+{% include "m_nav.html" %}
+
+转系申请：
+<table border="1">
+    <tr>
+        <th>姓名</th>
+        <th>当前院系</th>
+        <th>目标院系</th>
+        <th>操作</th>
+    </tr>
+    {% for i in change_list %}
+    <tr>
+        <td>{{i.Sn}}</td>
+        <td>
+            {{i.Dn}}
+        </td>
+        <td>{{i.Dn2}}</td>
+        <td>
+            {% if i.read == False %}
+            <form action="/m_change_do/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="cid" value={{i.cid}}>
+                <input type="submit" value="处理">
+            </form>
+            {% elif i.accept == True %}
+            已同意
+            {% else %}
+            已拒绝
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+退学申请：
+<table border="1">
+    <tr>
+        <th>姓名</th>
+        <th>院系</th>
+        <th>操作</th>
+    </tr>
+    {% for i in drop_list %}
+    <tr>
+        <td>{{i.Sn}}</td>
+        <td>
+            {{i.Dn}}
+        </td>
+        <td>
+            {% if i.read == False %}
+            <form action="/m_drop_do/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="did" value={{i.did}}>
+                <input type="submit" value="处理">
+            </form>
+            {% elif i.accept == True %}
+            已同意
+            {% else %}
+            已拒绝
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>

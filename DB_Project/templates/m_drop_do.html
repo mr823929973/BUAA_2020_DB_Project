@@ -1,0 +1,17 @@
+{% include "m_nav.html" %}
+
+<p>学生姓名：{{Sn}}</p>
+<p>学生学号：{{Sno}}</p>
+<p>所属院系：{{Dn}}</p>
+<hr>
+<p>申请理由：{{reason}}</p>
+<p>处理意见</p>
+
+<form action="/drop_solve/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="pk" value={{did}}>
+    <input type="radio" name="result" value="yes" checked>同意
+    <input type="radio" name="result" value="no">拒绝
+    <br>
+    <input type="submit" value="处理">
+</form>
