@@ -1,0 +1,16 @@
+{% include "m_nav.html" %}
+
+<form action="/m_add_student/" method="post">
+    {% csrf_token %}
+    学号：
+    <input type="text" name="Sno"><br>
+    姓名：
+    <input type="text" name="Sname"><br>
+    系：
+    <select name="Dno">
+        {% for i in d_list %}
+        <option value={{i.Dno}}>{{i.Dname}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="录入学生">
+</form>

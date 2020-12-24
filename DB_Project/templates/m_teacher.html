@@ -1,0 +1,10 @@
+{% include "m_nav.html" %}
+
+<form action="/m_add_teacher/" method="post">
+    {% csrf_token %}
+    工号：
+    <input type="text" name="Tno"><br>
+    姓名：
+    <input type="text" name="Tname"><br>
+    <input type="submit" value="录用教师">
+</form>

@@ -1,0 +1,10 @@
+{% include "m_nav.html" %}
+
+<form action="/m_add_department/" method="post">
+    {% csrf_token %}
+    系号：
+    <input type="text" name="Dno"><br>
+    系名：
+    <input type="text" name="Dname"><br>
+    <input type="submit" value="增加院系">
+</form>

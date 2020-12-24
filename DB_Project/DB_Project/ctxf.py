@@ -160,6 +160,32 @@ def getManage(ctx):
         one['Dname'] = i.Dname
         d_list.append(one)
     ctx['d_list'] = d_list
+
+    drop = Drop.objects.all()
+    drop_list = []
+    for i in drop:
+        one = {}
+        one['did'] = i.pk
+        one['Dn'] = i.Sno.Dno.Dname
+        one['Sn'] = i.Sno.Sname
+        one['read'] = i.read
+        one['accept'] = i.accept
+        drop_list.append(one)
+    ctx['drop_list'] = drop_list
+
+    change = Change.objects.all()
+    change_list = []
+    for i in change:
+        one = {}
+        one['cid'] = i.pk
+        one['Dn'] = i.Sno.Dno.Dname
+        one['Dn2'] = i.Dno.Dname
+        one['Sn'] = i.Sno.Sname
+        one['read'] = i.read
+        one['accept'] = i.accept
+        change_list.append(one)
+    ctx['change_list'] = change_list
+
     ctx['t'] = 'manager'
 
 

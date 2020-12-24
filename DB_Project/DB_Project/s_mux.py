@@ -89,7 +89,12 @@ def s_drop(request):
     if request.POST:
         s = request.POST['Sno']
         s = Student.objects.filter(Sno=s).first()
-        ctxf.getSinfo(s, ctx)
+        one = {}
+        one['Sname'] = s.Sname
+        one['Sno'] = s.Sno
+        one['Dname'] = s.Dno.Dname
+
+        ctx['er'] = one
     return render(request, "s_drop.html", ctx)
 
 
@@ -98,7 +103,13 @@ def s_Dchange(request):
     if request.POST:
         s = request.POST['Sno']
         s = Student.objects.filter(Sno=s).first()
-        ctxf.getSinfo(s, ctx)
+        one = {}
+        one['Sname'] = s.Sname
+        one['Sno'] = s.Sno
+        one['Dname'] = s.Dno.Dname
+        dl = Department.objects.exclude(Dno=s.Dno.Dno)
+        ctx['d_list'] = dl
+        ctx['er'] = one
     return render(request, "s_Dchange.html", ctx)
 
 

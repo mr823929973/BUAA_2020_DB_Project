@@ -93,3 +93,45 @@ def hw_solve(request):
             ctx['m1'] = '作业已提交！'
         ctxf.getSCinfo(sc, ctx)
     return render(request, "sc_lookHW.html", ctx)
+
+
+def drop_apply(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        reason = request.POST['reason']
+
+        s = Student.objects.filter(pk=s).first()
+
+        conflict = Drop.objects.filter(Sno=s, read=False)
+
+        if len(conflict) != 0:
+            ctx['m1'] = '上一次审批还在进行，请勿重复提交！'
+        else:
+            Drop.objects.create(Sno=s, reason=reason)
+            ctx['m1'] = '退学申请已提交！'
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_top.html", ctx)
+
+
+def change_apply(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        reason = request.POST['reason']
+        d = request.POST['Dno']
+        d = Department.objects.filter(pk=d).first()
+        s = Student.objects.filter(pk=s).first()
+
+        conflict = Change.objects.filter(Sno=s, read=False)
+        cs = SC.objects.filter(Sno=s, end=False)
+
+        if len(conflict) != 0:
+            ctx['m1'] = '上一次审批还在进行，请勿重复申请！'
+        elif len(cs) != 0:
+            ctx['m1'] = '还有尚未结课的本系课程，请结课后再进行申请！'
+        else:
+            Change.objects.create(Sno=s, Dno=d, reason=reason)
+            ctx['m1'] = '转系申请已提交！'
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_top.html", ctx)

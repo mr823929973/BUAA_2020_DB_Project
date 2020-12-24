@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>教务管理系统</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sheet.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+</head>
+<body>
+
+<p>您的退学申请已经审批通过，请点击确认完成最后的操作！</p>
+
+<form action="/drop_out/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="Sno" value={{out}}>
+    <input type="submit" value="确认">
+</form>
+
+</body>
+</html>

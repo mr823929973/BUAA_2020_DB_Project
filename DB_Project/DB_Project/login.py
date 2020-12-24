@@ -27,7 +27,11 @@ def login(request):
                 ctx['m0'] = '学号不存在！'
                 return render(request, "login.html", ctx)
             else:
-                ctxf.getSinfo(student[0], ctx)
+                s1 = student[0]
+                ctxf.getSinfo(s1, ctx)
+                if Drop.objects.filter(Sno=s1, read=True, accept=True):
+                    ctx['out'] = s1.Sno
+                    return render(request, "drop_success.html", ctx)
                 return render(request, "s_top.html", ctx)
         elif ty == 'teacher':
             teacher = Teacher.objects.filter(Tno=user)
@@ -43,5 +47,5 @@ def login(request):
                 return render(request, "login.html", ctx)
             else:
                 ctxf.getManage(ctx)
-                return render(request, "manage.html", ctx)
+                return render(request, "m_top.html", ctx)
     return render(request, "login.html", ctx)
