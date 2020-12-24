@@ -26,7 +26,7 @@
 
 <hr>
 
-<table border="1">
+<table border="1" class="altrowstable" width="1000px">
     <tr>
         <th>学生姓名</th>
         <th>提交次数</th>
@@ -34,7 +34,7 @@
         <th>作业评阅</th>
     </tr>
     {% for i in s_hw_list %}
-    <tr>
+    <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
         <td>{{i.Sn}}</td>
         <td>
             {{i.had_time}}

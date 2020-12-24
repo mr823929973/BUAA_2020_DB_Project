@@ -5,14 +5,14 @@
 <p>开课院系：{{D.Dname}}</p>
 <p>课程容量：{{se}}/{{C.v}}</p>
 <p>花名册：</p>
-<table border="1">
+<table border="1" class="altrowstable" width="1000px">
     <tr>
         <th>姓名</th>
         <th>成绩</th>
         <th>操作</th>
     </tr>
     {% for i in s_list %}
-    <tr>
+    <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
         <td>{{i.Sn}}</td>
         <td>
             {% if i.end == True %}

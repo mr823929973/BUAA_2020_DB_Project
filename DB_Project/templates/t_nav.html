@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>教务管理系统</title>
+    <title>J务管理系统</title>
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/sheet.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
@@ -11,6 +11,9 @@
 <body>
 
 <ul class="nav">
+    <li class="pic">
+        <img src="{% static 'pic/J00.png' %}" width="123" > 
+    </li>
     <li class="left">
         <form action="/t_top/" method="post">
             {% csrf_token %}

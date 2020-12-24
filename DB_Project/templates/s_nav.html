@@ -12,6 +12,9 @@
 
 <ul class="nav">
     <li class="left">
+        J务管理系统
+    </li>
+    <li class="left">
         <form action="/top/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" value={{Sno}}>
@@ -29,7 +32,7 @@
         <form action="/s_course/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="已选课程">
+            <input type="submit" value="已选课程" background="transparent">
         </form>
     </li>
     <li class="left">
@@ -43,9 +46,6 @@
             {% csrf_token %}
             <input type="submit" value="学籍异动">
         </form>
-    </li>
-    <li class="none">
-        J务管理系统
     </li>
     <li class="right">
         <form action="/top/" method="post">
