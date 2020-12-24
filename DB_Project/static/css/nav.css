@@ -68,3 +68,69 @@ ul.nav input{
     background: transparent;
 }
 
+ul.nav2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid red;
+    background-color: blueviolet;
+    font-size: 15px;
+    color: white;
+}
+
+ul.nav2 li.left {
+    padding: 4px 6px;
+    float: left;
+    text-align: center;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+}
+
+ul.nav2 li.pic {
+    padding: 0px 0px;
+    float: left;
+    text-align: center;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+}
+
+ul.nav2 li.right {
+    padding: 4px 6px;
+    float: right;
+    text-align: center;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+}
+
+ul.nav2 li.none {
+    padding: 14px 16px;
+    float: left;
+    font-size: 20px;
+    text-align: center;
+    border-right : none;
+    border-left : none;
+}
+
+ul.nav2 input{
+    font-size: 15px;
+    border:none;
+    border-radius:0;
+    border-bottom:none 1px solid;
+    box-shadow: 0px 0px 0px 0px;
+    outline-color: none ;
+    outline-style: none ;
+    outline-width: 0px ;
+    border: none ;
+    border-style: none ;
+    box-shadow: 0px 0px 0px 0px;
+    text-shadow: none ;
+    -webkit-box-shadow: 0 0 0 ;
+    -webkit-appearance: none ;
+    -webkit-user-select: text ;
+    outline-color: none ;
+    box-shadow: none;
+    color:greenyellow;
+    background: transparent;
+}
+

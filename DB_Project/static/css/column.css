@@ -1,0 +1,27 @@
+.page_center { 
+    width:100%; 
+} 
+.divnav { 
+    background-color:red; 
+    height:20px; 
+} 
+.divleft { 
+    width:800px; 
+    position:absolute; 
+    top:200px;
+} 
+.divmiddle { 
+    background-color:yellow; 
+} 
+.divright { 
+    width:800px; 
+    position:absolute; 
+    top:200px; 
+    right:0; 
+} 
+.divfoot { 
+    background-color:pink; 
+} 
+.divmain { 
+    position:relative; 
+} 
