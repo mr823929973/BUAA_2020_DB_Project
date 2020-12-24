@@ -10,6 +10,7 @@ class Student(models.Model):
     Sno = models.IntegerField(primary_key=True)
     Sname = models.CharField(max_length=20)
     Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
+    pw = models.CharField(default='', max_length=100)
 
 
 class Course(models.Model):
@@ -30,6 +31,7 @@ class TC(models.Model):
 class Teacher(models.Model):
     Tno = models.IntegerField(primary_key=True)
     Tname = models.CharField(max_length=20)
+    pw = models.CharField(default='', max_length=100)
 
 
 class SC(models.Model):
@@ -108,3 +110,4 @@ class Change(models.Model):
     read = models.BooleanField(default=False)
     accept = models.BooleanField(default=False)
     reason = models.CharField(max_length=30)
+

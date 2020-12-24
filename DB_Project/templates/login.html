@@ -9,28 +9,23 @@
     <title>J务管理系统</title>
 </head>
 <body>
-    <div class="form-wrapper">
-        <div class="header">
-            J务管理系统
-        </div>
-        <form action="/login/" method="post">
-            {% csrf_token %}
+<div class="form-wrapper">
+    <div class="header">
+        J务管理系统
+    </div>
+    <form action="/login/" method="post">
+        {% csrf_token %}
         <div class="input-wrapper">
-        <div class="border-wrapper">
-            <input type="text" name="id" class="border-item" placeholder="学工号">
+            <div class="border-wrapper">
+                <input type="text" name="id" class="border-item" placeholder="学工号">
+            </div>
+            <input type="password" name="password">
         </div>
-    <!--        密码：<input type="password" name="password">-->
-        </div>
-        <div class="icon-wrapper">
-        <input type="radio" name="type" value="student" checked>&nbsp;学生&nbsp;&nbsp;
-        <input type="radio" name="type" value="teacher">&nbsp;老师&nbsp;&nbsp;
-        <input type="radio" name="type" value="manager">&nbsp;教务&nbsp;&nbsp;
-        </div>
-        <div class="action">
-            <input type="submit" class="btn" value="登录">
-        </div>
-    </form>
+
+        <input type="submit" class="btn" value="登录">
 </div>
-  <!--   <p>提示信息：{{ m0 }}</p> -->
+</form>
+</div>
+<!--   <p>提示信息：{{ m0 }}</p> -->
 </body>
 </html>
