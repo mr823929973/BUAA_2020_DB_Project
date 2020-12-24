@@ -2,9 +2,13 @@
 
 <form action="/m_add_teacher/" method="post">
     {% csrf_token %}
-    工号：
-    <input type="text" name="Tno"><br>
-    姓名：
-    <input type="text" name="Tname"><br><br><br>
+    <div class="txtb">
+        工号：<br>
+        <input type="text" name="Tno" placeholder="请输入教师工号"><br>
+    </div><br>
+    <div class="txtb">
+        姓名：<br>
+        <input type="text" name="Tname" placeholder="请输入教师姓名"><br>
+    </div><br><br>
     <input type="submit" value="录用教师" class="button-3d-1" style="cursor:pointer">
 </form>

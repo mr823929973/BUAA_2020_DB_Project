@@ -1,11 +1,16 @@
 
 body {
     /*background-color:white;*/
-    background-color: rgb(0, 255, 255, 0.1);
+    background-color: rgb(0, 255, 255, 0.1); 
+    /*background-image:url('../pic/zhongnanhai.jpg');*/
     text-align:center;
     /*background-image:url(../pic/background-image.jpeg);*/
 }
 
 table {
     text-align:center;
+}
+
+p.h1 {
+    font-size: 25px;
 }

@@ -2,10 +2,14 @@
 
 <form action="/m_add_student/" method="post">
     {% csrf_token %}
-    学号：
-    <input type="text" name="Sno"><br>
-    姓名：
-    <input type="text" name="Sname"><br>
+    <div class="txtb">
+        学号：<br>
+        <input type="text" name="Sno" placeholder="请输入学生学号"><br>
+    </div>
+    <div class="txtb">
+        姓名：<br>
+        <input type="text" name="Sname" placeholder="请输入学生姓名"><br>
+    </div>
     系：
     <select name="Dno">
         {% for i in d_list %}

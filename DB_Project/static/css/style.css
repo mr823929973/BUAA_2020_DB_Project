@@ -112,3 +112,6 @@ body {
     cursor: pointer;
 }
 
+img {
+    opacity:0.4;
+}
