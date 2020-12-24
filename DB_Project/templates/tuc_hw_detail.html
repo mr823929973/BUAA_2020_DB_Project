@@ -1,4 +1,4 @@
-{% include "tc_nav.html" %}
+{% include "tuc_nav.html" %}
 
 <p>作业标题：{{hw.name}}</p>
 <p>提交次数上限：{% if hw.times != 0 %}
@@ -14,7 +14,8 @@
     {% csrf_token %}
     <input type="hidden" name="hw" value={{hw.pk}}>
     <input type="hidden" name="tc" value={{tid}}>
-    <input type="hidden" name="who" value="teacher">
+    <input type="hidden" name="TUno" value={{user.Sno}}>
+    <input type="hidden" name="who" value="tutor">
     <input type="submit" value="删除作业">
 </form>
 <br>
@@ -22,7 +23,8 @@
     {% csrf_token %}
     <input type="hidden" name="hw" value={{hw.pk}}>
     <input type="hidden" name="tc" value={{tid}}>
-    <input type="hidden" name="who" value="teacher">
+    <input type="hidden" name="TUno" value={{user.Sno}}>
+    <input type="hidden" name="who" value="tutor">
     <input type="submit" value="修改作业信息">
 </form>
 
@@ -58,8 +60,9 @@
                 {% csrf_token %}
                 <input type="hidden" name="Sno" value={{i.Sno}}>
                 <input type="hidden" name="tc" value={{tid}}>
+                <input type="hidden" name="TUno" value={{user.Sno}}>
                 <input type="hidden" name="hw" value={{hw.pk}}>
-                <input type="hidden" name="who" value="teacher">
+                <input type="hidden" name="who" value="tutor">
                 {% if i.read == False %}
                 <input type="submit" value="评阅作业">
                 {% else %}

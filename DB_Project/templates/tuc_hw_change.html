@@ -1,4 +1,4 @@
-{% include "tc_nav.html" %}
+{% include "tuc_nav.html" %}
 
 <form action="/add_HW/" method="post">
     {% csrf_token %}
@@ -13,8 +13,9 @@
     限制次数：
     <input type="input" name="times">
     <input type="hidden" name="tc" value={{tid}}>
-    <input type="hidden" name="who" value="teacher">
     <input type="hidden" name="hw_type" value="change">
+    <input type="hidden" name="who" value="tutor">
+    <input type="hidden" name="TUno" value={{user.Sno}}>
     <input type="hidden" name="hw" value={{hwid}}>
     <br><br>
     <input type="submit" value="修改作业信息">

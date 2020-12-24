@@ -1,4 +1,4 @@
-{% include "tc_nav.html" %}
+{% include "tuc_nav.html" %}
 
 <p>作业列表：</p>
 <table border="1">
@@ -23,7 +23,8 @@
             <form action="/hw_detail/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="tc" value={{tid}}>
-                <input type="hidden" name="who" value="teacher">
+                <input type="hidden" name="who" value="tutor">
+                <input type="hidden" name="TUno" value={{user.Sno}}>
                 <input type="hidden" name="hw" value={{i.hwid}}>
                 <input type="submit" value="作业详情">
             </form>

@@ -9,7 +9,7 @@
     <tr>
         <th>姓名</th>
         <th>成绩</th>
-        <th>操作</th>
+        <th>助教聘任</th>
     </tr>
     {% for i in s_list %}
     <tr>
@@ -25,7 +25,23 @@
             {% endif %}
         </td>
         <td>
-            没写，有可能不写
+            {% if i.Sno in tutor_list %}
+            <form action="/delete_tutor/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="tc" value={{tid}}>
+                <input type="hidden" name="Sno" value={{i.Sno}}>
+                <input type="submit" value="解任助教">
+            </form>
+            {% elif i.end == True %}
+            <form action="/add_tutor/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="tc" value={{tid}}>
+                <input type="hidden" name="Sno" value={{i.Sno}}>
+                <input type="submit" value="设为助教">
+            </form>
+            {% else %}
+            学习中
+            {% endif %}
         </td>
     </tr>
     {% endfor %}

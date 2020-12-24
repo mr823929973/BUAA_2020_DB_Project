@@ -1,4 +1,4 @@
-{% include "tc_nav.html" %}
+{% include "tuc_nav.html" %}
 
 <p>作业标题：{{hw.name}}</p>
 <p>提交次数上限：{% if hw.times != 0 %}
@@ -35,7 +35,8 @@
     <br>
     <textarea rows="10" cols="30" name="back">{{back}}</textarea>
     <br>
-    <input type="hidden" name="who" value="teacher">
+    <input type="hidden" name="TUno" value={{user.Sno}}>
+    <input type="hidden" name="who" value="tutor">
     {% if hwd.read == True %}
     <input type="submit" value="重新评阅">
     {% else %}

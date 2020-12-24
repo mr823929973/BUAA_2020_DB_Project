@@ -59,13 +59,20 @@ def add_HW(request):
         ift = request.POST.getlist('ift')
         tc = request.POST['tc']
         tc = TC.objects.filter(pk=tc).first()
-        doing = request.POST['type']
+        doing = request.POST['hw_type']
 
         conflict = HW.objects.filter(name=name, TC=tc)
 
         if len(conflict) != 0 and doing == 'add':
             ctx['m1'] = '课内已有同名作业！'
-            ctxf.getTCinfo(tc, ctx)
+            who = request.POST['who']
+            if who == 'tutor':
+                tu = request.POST['TUno']
+                tu = Student.objects.filter(pk=tu).first()
+                ctxf.getTUinfo(tu, tc, ctx)
+                return render(request, "tuc_addHW.html", ctx)
+            elif who == 'teacher':
+                ctxf.getTCinfo(tc, ctx)
             return render(request, "tc_addHW.html", ctx)
         elif doing == 'change':
             hw = request.POST['hw']
@@ -81,6 +88,14 @@ def add_HW(request):
             hw.save()
             ctx['m1'] = '作业信息修改成功！'
             ctxf.getTCHWinfo(ctx, tc, hw)
+            who = request.POST['who']
+            if who == 'tutor':
+                tu = request.POST['TUno']
+                tu = Student.objects.filter(pk=tu).first()
+                ctxf.getTUinfo(tu, tc, ctx)
+                return render(request, "tuc_hw_detail.html", ctx)
+            elif who == 'teacher':
+                ctxf.getTCinfo(tc, ctx)
             return render(request, "tc_hw_detail.html", ctx)
         else:
             if 'yes' in ift:
@@ -89,7 +104,14 @@ def add_HW(request):
             else:
                 HW.objects.create(name=name, question=question, times=0, TC=tc)
             ctx['m1'] = '成功发布作业！'
-        ctxf.getTCinfo(tc, ctx)
+        who = request.POST['who']
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, tc, ctx)
+            return render(request, "tuc_lookHW.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_lookHW.html", ctx)
 
 
@@ -106,7 +128,14 @@ def delete_hw(request):
             hw = hw.first()
             hw.delete()
             ctx['m1'] = '作业删除成功！'
-        ctxf.getTCinfo(tc, ctx)
+        who = request.POST['who']
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, tc, ctx)
+            return render(request, "tuc_lookHW.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_lookHW.html", ctx)
 
 
@@ -157,5 +186,12 @@ def read_do(request):
         hwd.read = True
         hwd.save()
         ctxf.getTCHWinfo(ctx, hwd.HW.TC, hwd.HW)
-        ctxf.getTCinfo(hwd.HW.TC, ctx)
+        who = request.POST['who']
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, hwd.HW.TC, ctx)
+            return render(request, "tuc_lookHW.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(hwd.HW.TC, ctx)
     return render(request, "tc_hw_detail.html", ctx)
