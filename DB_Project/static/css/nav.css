@@ -73,8 +73,8 @@ ul.nav2 {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid red;
-    background-color: blueviolet;
+    border: 1px solid white;
+    background-color:#2e74ad;
     font-size: 15px;
     color: white;
 }
@@ -83,24 +83,24 @@ ul.nav2 li.left {
     padding: 4px 6px;
     float: left;
     text-align: center;
-    border-left: 1px solid red;
-    border-right: 1px solid red;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 ul.nav2 li.pic {
     padding: 0px 0px;
     float: left;
     text-align: center;
-    border-left: 1px solid red;
-    border-right: 1px solid red;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 ul.nav2 li.right {
     padding: 4px 6px;
     float: right;
     text-align: center;
-    border-left: 1px solid red;
-    border-right: 1px solid red;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 ul.nav2 li.none {
@@ -130,7 +130,7 @@ ul.nav2 input{
     -webkit-user-select: text ;
     outline-color: none ;
     box-shadow: none;
-    color:greenyellow;
+    color:#2e74ad;
     background: transparent;
 }
 

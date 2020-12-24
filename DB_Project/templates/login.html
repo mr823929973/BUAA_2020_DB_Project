@@ -17,16 +17,37 @@
         {% csrf_token %}
         <div class="input-wrapper">
             <div class="border-wrapper">
-                <input type="text" name="id" class="border-item" placeholder="学工号">
+                <input type="text" name="id" class="border-item" placeholder="学工号" id="username">
             </div>
             <div class="border-wrapper">
-                <input type="password" name="password" class="border-item" placeholder="密码">
+                <input type="password" name="password" class="border-item" placeholder="密码"clear id="passwd" >
             </div>
         </div>
-
         <div class="action">
-            <input type="submit" class="btn" value="登 录">
+            <input type="submit" class="btn" value="登 录" onclick = "return check()">
         </div>
+        <script type = "text/javascript">  
+            function checkpasswd(){
+                var passwd = document.getElementById("passwd")
+                if(passwd.value == ""){
+                    alert("密码不能为空!"); 
+                    return false;
+                }
+                return ture
+            }
+            function check() {
+                var username = document.getElementById("username")
+                if(! /^[0-9]*$/.test(username.value)){  
+                    alert("学号只能输入数字!"); 
+                    return false; 
+                }
+                if(username.value == ""){
+                    alert("学号不能为空!"); 
+                    return false;
+                }
+                return checkpasswd()
+            }
+        </script>
     </form>
 
 </div>
