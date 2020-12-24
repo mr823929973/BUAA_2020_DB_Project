@@ -152,4 +152,16 @@ def s_remark_solve(request):
 
         r = request.POST['r']
 
-    return render(request, "sc_lookHW.html", ctx)
+        rec = request.POST['rec']
+
+        rl = Remark.objects.filter(SC=sc)
+
+        if len(rl) != 0:
+            ctx['m1'] = '不能重复评教！'
+        else:
+            ctx['m1'] = '成功提交评价！'
+            Remark.objects.create(SC=sc, p0=p0, p1=p1
+                                  , p4=p4, p3=p3, p2=p2
+                                  , p5=p5, rec=rec, r=r)
+        ctxf.getSCinfo(sc, ctx)
+    return render(request, "sc_top.html", ctx)
