@@ -12,7 +12,7 @@
     <tr>
         <td>{{i.name}}</td>
         <td>
-            XX/
+            {{i.times_had}}/
             {% if i.times != 0 %}
             {{i.times}}
             {% else %}
@@ -20,10 +20,24 @@
             {% endif %}
         </td>
         <td>
-            未提交、已提交、XX分，但是都还没写
+            {% if i.had == False %}
+            未提交
+            {% elif i.read == True %}
+            {{i.point}}
+            {% else %}
+            已提交
+            {% endif %}
         </td>
         <td>
-            提交、修改等等，但是都还没写
+
+            <form action="/sc_doHW/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="hwid" value={{i.hwid}}>
+                <input type="hidden" name="Sno" value={{S.Sno}}>
+                <input type="hidden" name="sc" value={{scid}}>
+                <input type="submit" value="查看作业">
+
+            </form>
         </td>
     </tr>
     {% endfor %}

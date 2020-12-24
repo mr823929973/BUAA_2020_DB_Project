@@ -1,0 +1,33 @@
+{% include "sc_nav.html" %}
+
+<p>作业标题：{{hw.name}}</p>
+<p>提交次数上限：{% if hw.times != 0 %}
+    {{hw.times}}
+    {% else %}
+    无限制
+    {% endif %}</p>
+<p>已提交次数：{{had_time}}</p>
+<p> 得分：{% if hwd_read == False %}
+    未评阅
+    {% else %}
+    {{hwd.point}}
+    {% endif %}</p>
+<p>作业内容：</p>
+<p>{{hw.question}}</p>
+<hr>
+<p>提交内容：</p>
+
+<form action="/hw_solve/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="hw" value="{{hw.pk}}">
+    <input type="hidden" name="sc" value={{scid}}>
+    <textarea rows="10" cols="30" name="content">{{hw_content}}</textarea>
+    <br>
+    {% if had_time == 0 %}
+    <input type="submit" value="提交作业">
+    {% elif had_time < hw.times %}
+    <input type="submit" value="修改作业">
+    {% else %}
+    已达提交上限！
+    {% endif %}
+</form>

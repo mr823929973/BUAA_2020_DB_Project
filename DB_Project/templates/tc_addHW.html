@@ -3,12 +3,10 @@
 <form action="/add_HW/" method="post">
     {% csrf_token %}
     作业标题：<br>
-    <textarea rows="2" cols="15" name="name">
-    </textarea>
+    <textarea rows="2" cols="15" name="name"></textarea>
     <br>
     作业内容：<br>
-    <textarea rows="5" cols="15" name="question">
-    </textarea>
+    <textarea rows="5" cols="15" name="question"></textarea>
     <br>
     <input type="checkbox" name="ift" value="yes">
     限制提交次数<br><br>

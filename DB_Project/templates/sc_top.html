@@ -23,8 +23,7 @@
     {% csrf_token %}
     <input type="hidden" name="sc" value={{scid}}>
     申请理由：<br>
-    <textarea rows="5" cols="15" name="reason">
-    </textarea><br>
+    <textarea rows="5" cols="15" name="reason"></textarea><br>
     <input type="submit" value="申请免修">
 </form>
 {% endif %}

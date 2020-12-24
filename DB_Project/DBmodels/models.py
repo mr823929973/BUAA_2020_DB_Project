@@ -58,6 +58,7 @@ class HWD(models.Model):
     read = models.BooleanField(default=False)
     point = models.FloatField(default=6)
     back = models.CharField(max_length=50)
+    had = models.IntegerField(default=0)
 
 
 class Tutor(models.Model):

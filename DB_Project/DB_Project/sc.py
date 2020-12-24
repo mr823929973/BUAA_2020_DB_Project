@@ -65,3 +65,31 @@ def free_apply(request):
             ctx['m1'] = '免修申请已提交！'
         ctxf.getSCinfo(sc, ctx)
     return render(request, "sc_top.html", ctx)
+
+
+def hw_solve(request):
+    ctx = {}
+    if request.POST:
+        sc = request.POST['sc']
+        sc = SC.objects.filter(pk=sc).first()
+        content = request.POST['content']
+        s = sc.Sno
+        hw = request.POST['hw']
+        hw = HW.objects.filter(pk=hw).first()
+
+        had = HWD.objects.filter(HW=hw, Sno=s)
+
+        if len(had) != 0:
+            had = had.first()
+            if had.had >= hw.times:
+                ctx['m1'] = '已达提交次数上限！'
+            else:
+                had.had = had.had + 1
+                had.content = content
+                had.save()
+                ctx['m1'] = '作业修改成功！'
+        else:
+            HWD.objects.create(Sno=s, HW=hw, content=content, had=1)
+            ctx['m1'] = '作业已提交！'
+        ctxf.getSCinfo(sc, ctx)
+    return render(request, "sc_lookHW.html", ctx)

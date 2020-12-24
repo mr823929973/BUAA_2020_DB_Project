@@ -121,9 +121,25 @@ def getSCinfo(sc, ctx):
     ctx['se'] = SC.objects.filter(TC=sc.TC).count()
 
     hwl = HW.objects.filter(TC=sc.TC)
-    hw_list = hwl
-    # for i in hwl:
-    #     one = {}
+    hw_list = []
+    for i in hwl:
+        one = {}
+        hwdl = HWD.objects.filter(Sno=sc.Sno, HW=i)
+        one['name'] = i.name
+        one['times'] = i.times
+        one['hwid'] = i.pk
+        if len(hwdl) != 0:
+            one['had'] = True
+            hwdl = hwdl.first()
+            one['times_had'] = hwdl.had
+            one['hwdid'] = hwdl.pk
+            one['read'] = hwdl.read
+            one['point'] = hwdl.point
+        else:
+            one['had'] = False
+            one['times_had'] = 0
+        hw_list.append(one)
+
     ctx['hw_list'] = hw_list
 
 

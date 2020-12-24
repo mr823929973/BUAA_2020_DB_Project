@@ -42,3 +42,27 @@ def sc_lookHW(request):
         sc = SC.objects.filter(pk=sc).first()
         ctxf.getSCinfo(sc, ctx)
     return render(request, "sc_lookHW.html", ctx)
+
+def sc_doHW(request):
+    ctx = {}
+    if request.POST:
+        hw = request.POST['hwid']
+        hw = HW.objects.filter(pk=hw).first()
+        s = request.POST['Sno']
+        s = Student.objects.filter(pk=s).first()
+        sc = request.POST['sc']
+        sc = SC.objects.filter(pk=sc).first()
+        ctxf.getSCinfo(sc, ctx)
+
+        ctx['hw'] = hw
+        hwd = HWD.objects.filter(HW=hw, Sno=s)
+        if len(hwd) == 0:
+            ctx['hwd_read'] = False
+            ctx['had_time'] = 0
+            ctx['hw_content'] = ''
+        else:
+            ctx['hwd_read'] = hwd.first().read
+            ctx['hwd'] = hwd
+            ctx['had_time'] = hwd.first().had
+            ctx['hw_content'] = hwd.first().content
+    return render(request, "sc_HW_do.html", ctx)

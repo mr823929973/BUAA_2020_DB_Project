@@ -38,6 +38,8 @@ urlpatterns = [
     url(r'^initial/$', manage.m_delete_all_t),
     url(r'^open_c/$', tc.open_c),
     url(r'^tc_lookHW/$', t_mux.tc_lookHW),
+    url(r'^sc_doHW/$', s_mux.sc_doHW),
+    url(r'^hw_solve/$', sc.hw_solve),
     url(r'^tc_free_do/$', t_mux.tc_free_do),
     url(r'^sc_lookHW/$', s_mux.sc_lookHW),
     url(r'^free_solve/$', tc.free_solve),
