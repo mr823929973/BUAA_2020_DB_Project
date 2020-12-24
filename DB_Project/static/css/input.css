@@ -166,13 +166,13 @@
 /*备注框样式*/
 .txtb input,
 .txtb textarea {
-    width: 100%;
+    width: 500px;
     background: none;
-    border: none;
+    border-radius: 10px;
     outline: none;
     margin-top: 6px;
     font-size: 18px;
-    color: #fff;
+    color: black;
 }
 
 /*提交按钮样式*/
