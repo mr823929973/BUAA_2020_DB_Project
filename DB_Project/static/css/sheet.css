@@ -57,7 +57,8 @@ table.table td {
 
 table form input{
     font-size: 20px;
-    border:none;
+    border:2px;
+    border-color: black;
     border-radius:0;
     border-bottom:none 1px solid;
     box-shadow: 0px 0px 0px 0px;
@@ -72,7 +73,7 @@ table form input{
     -webkit-appearance: none ;
     -webkit-user-select: text ;
     outline-color: none ;
-    box-shadow: none;
-    background: transparent;
+    background-color: greenyellow;
 }
+
 
