@@ -45,7 +45,14 @@ def tc_addHW(request):
     if request.POST:
         tc = request.POST['tc']
         tc = TC.objects.filter(pk=tc).first()
-        ctxf.getTCinfo(tc, ctx)
+        who = request.POST['who']
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, tc, ctx)
+            return render(request, "tuc_addHW.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_addHW.html", ctx)
 
 
@@ -54,7 +61,14 @@ def tc_lookHW(request):
     if request.POST:
         tc = request.POST['tc']
         tc = TC.objects.filter(pk=tc).first()
-        ctxf.getTCinfo(tc, ctx)
+        who = request.POST['who']
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, tc, ctx)
+            return render(request, "tuc_lookHW.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_lookHW.html", ctx)
 
 
@@ -65,8 +79,15 @@ def tc_hw_detail(request):
         tc = TC.objects.filter(pk=tc).first()
         hw = request.POST['hw']
         hw = HW.objects.filter(pk=hw).first()
-        ctxf.getTCinfo(tc, ctx)
         ctxf.getTCHWinfo(ctx, tc, hw)
+        who = request.POST['who']
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, tc, ctx)
+            return render(request, "tuc_hw_detail.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_hw_detail.html", ctx)
 
 
@@ -77,9 +98,16 @@ def change_hw(request):
         tc = TC.objects.filter(pk=tc).first()
         hw = request.POST['hw']
         hw = HW.objects.filter(pk=hw).first()
-        ctxf.getTCinfo(tc, ctx)
+        who = request.POST['who']
         ctx['hw'] = hw
         ctx['hwid'] = hw.pk
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, tc, ctx)
+            return render(request, "tuc_hw_change.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_hw_change.html", ctx)
 
 
@@ -92,7 +120,6 @@ def read_hw(request):
         hw = HW.objects.filter(pk=hw).first()
         s = request.POST['Sno']
         s = Student.objects.filter(pk=s).first()
-        ctxf.getTCinfo(tc, ctx)
         ctx['hw'] = hw
         ctx['hwid'] = hw.pk
         hwd = HWD.objects.filter(HW=hw, Sno=s).first()
@@ -102,6 +129,14 @@ def read_hw(request):
         else:
             ctx['back'] = ''
         ctx['hwd'] = hwd
+        who = request.POST['who']
+        if who == 'tutor':
+            tu = request.POST['TUno']
+            tu = Student.objects.filter(pk=tu).first()
+            ctxf.getTUinfo(tu, tc, ctx)
+            return render(request, "tuc_read_hw.html", ctx)
+        elif who == 'teacher':
+            ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_read_hw.html", ctx)
 
 
@@ -122,3 +157,14 @@ def t_add(request):
         ctxf.getTinfo(t, ctx)
     return render(request, "t_add.html", ctx)
 
+
+def tuc_top(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        s = request.POST['TUno']
+        s = Student.objects.filter(pk=s).first()
+        ctxf.getTCinfo(tc, ctx)
+        ctxf.getSinfo(s, ctx)
+    return render(request, "tuc_top.html", ctx)

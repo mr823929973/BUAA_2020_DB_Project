@@ -17,6 +17,15 @@ def s_select(request):
     return render(request, "s_select.html", ctx)
 
 
+def s_top(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        s = Student.objects.filter(Sno=s).first()
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_top.html", ctx)
+
+
 def s_course(request):
     ctx = {}
     if request.POST:
@@ -73,3 +82,39 @@ def sc_doHW(request):
             ctx['hwd'] = hwd.first()
             ctx['hw_content'] = hwd.first().content
     return render(request, "sc_HW_detail.html", ctx)
+
+
+def s_drop(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        s = Student.objects.filter(Sno=s).first()
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_drop.html", ctx)
+
+
+def s_Dchange(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        s = Student.objects.filter(Sno=s).first()
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_Dchange.html", ctx)
+
+
+def s_remark_top(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        s = Student.objects.filter(Sno=s).first()
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_remark_top.html", ctx)
+
+
+def s_change_top(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        s = Student.objects.filter(Sno=s).first()
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_change_top.html", ctx)

@@ -1,0 +1,40 @@
+{% include "s_nav.html" %}
+
+一个还没写的退学申请界面，哈哈
+<!--<p>课程名称：{{C.Cname}}</p>-->
+<!--<p>授课教师：{{T.Tname}}</p>-->
+<!--<p>开课院系：{{D.Dname}}</p>-->
+<!--<p>课程容量：{{se}}/{{C.v}}</p>-->
+<!--<br>-->
+<!--<p>学生名称：{{S.Sname}}</p>-->
+<!--<p>-->
+<!--    {% if sc.end == True %}-->
+<!--    {% if sc.free == True %}-->
+<!--    免修-->
+<!--    {% endif %}-->
+<!--    {{sc.grade}}-->
+<!--    {% else %}-->
+<!--    未结课-->
+<!--    {% endif %}-->
+<!--</p>-->
+<!--</table>-->
+
+<!--{% if sc.free == False %}-->
+<!--<form action="/free_apply/" method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <input type="hidden" name="sc" value={{scid}}>-->
+<!--    申请理由：<br>-->
+<!--    <textarea rows="5" cols="15" name="reason"></textarea><br>-->
+<!--    <input type="submit" value="申请免修">-->
+<!--</form>-->
+<!--{% endif %}-->
+
+<!--<br>-->
+<!--{% if sc.end == False %}-->
+<!--<form action="/delete_c/" method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <input type="hidden" name="s" value={{S.Sno}}>-->
+<!--    <input type="hidden" name="sc" value={{scid}}>-->
+<!--    <input type="submit" value="退课">-->
+<!--</form>-->
+<!--{% endif %}-->

@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path
 from django.conf.urls import url
 
-from . import sth, login, sc, tc, manage, s_mux, t_mux
+from . import sth, login, sc, tc, manage, s_mux, t_mux, tutor
 
 urlpatterns = [
     url(r'^account/$', login.top),
@@ -27,6 +27,11 @@ urlpatterns = [
     url(r'^t_add/$', t_mux.t_add),
     url(r'^select_c/$', sc.select),
     url(r'^s_course/$', s_mux.s_course),
+    url(r'^s_drop/$', s_mux.s_drop),
+    url(r'^s_remark/$', s_mux.s_remark_top),
+    url(r'^s_Dchange/$', s_mux.s_Dchange),
+    url(r'^s_change_top/$', s_mux.s_change_top),
+    url(r'^s_top/$', s_mux.s_top),
     url(r'^top/$', sth.top),
     url(r'^add_c/$', tc.add),
     url(r'^free_apply/$', sc.free_apply),
@@ -53,5 +58,9 @@ urlpatterns = [
     url(r'^sc_detail/$', s_mux.sc_detail),
     url(r'^hw_detail/$', t_mux.tc_hw_detail),
     url(r'^add_HW/$', tc.add_HW),
+    url(r'^add_tutor/$', tutor.add_tutor),
+    url(r'^tutor_before/$', tutor.tu_before),
+    url(r'^delete_tutor/$', tutor.delete_tutor),
+    url(r'^tuc_detail/$', t_mux.tuc_top),
     url(r'.*', sth.top),
 ]

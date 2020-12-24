@@ -82,6 +82,7 @@ def getTCinfo(tc, ctx):
         one['Sn'] = i.Sno.Sname
         one['free'] = i.free
         one['grade'] = i.grade
+        one['Sno'] = i.Sno.Sno
         s_list.append(one)
     ctx['s_list'] = s_list
 
@@ -108,6 +109,12 @@ def getTCinfo(tc, ctx):
         one['accept'] = i.accept
         free_list.append(one)
     ctx['free_list'] = free_list
+
+    tutor = Tutor.objects.filter(TC=tc)
+    tutor_list = []
+    for i in tutor:
+        tutor_list.append(i.Sno.Sno)
+    ctx['tutor_list'] = tutor_list
 
 
 def getSCinfo(sc, ctx):
@@ -144,7 +151,6 @@ def getSCinfo(sc, ctx):
     ctx['hw_list'] = hw_list
 
 
-
 def getManage(ctx):
     department = Department.objects.all()
     d_list = []
@@ -178,3 +184,35 @@ def getTCHWinfo(ctx, tc, hw):
             one['point'] = hwd_now.point
         s_hw_list.append(one)
     ctx['s_hw_list'] = s_hw_list
+
+
+def getTUinfo(s, tc, ctx):
+    ctx['C'] = tc.Cno
+    ctx['D'] = tc.Dno
+    ctx['T'] = tc.Tno
+    ctx['se'] = SC.objects.filter(TC=tc).count()
+    ctx['tid'] = tc.pk
+
+    sl = SC.objects.filter(TC=tc)
+    s_list = []
+    for i in sl:
+        one = {}
+        one['end'] = i.end
+        one['Sn'] = i.Sno.Sname
+        one['free'] = i.free
+        one['grade'] = i.grade
+        one['Sno'] = i.Sno.Sno
+        s_list.append(one)
+    ctx['s_list'] = s_list
+
+    hwl = HW.objects.filter(TC=tc)
+    hw_list = []
+    for i in hwl:
+        one = {}
+        one['times'] = i.times
+        one['name'] = i.name
+        one['hwid'] = i.pk
+        one['done'] = HWD.objects.filter(HW=i).count()
+        hw_list.append(one)
+    ctx['hw_list'] = hw_list
+    ctx['user'] = s

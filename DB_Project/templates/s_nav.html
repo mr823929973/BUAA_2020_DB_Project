@@ -17,7 +17,7 @@
     <li class="left">
         <form action="/top/" method="post" class="top">
             {% csrf_token %}
-            <input type="hidden" value={{Sno}}>
+            <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="首页">
         </form>
     </li>
@@ -36,14 +36,16 @@
         </form>
     </li>
     <li class="left">
-        <form action="/top/" method="post" class="top">
+        <form action="/s_remark/" method="post" class="top">
             {% csrf_token %}
+            <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="评教">
         </form>
     </li>
     <li class="left">
-        <form action="/top/" method="post" class="top">
+        <form action="/s_change_top/" method="post" class="top">
             {% csrf_token %}
+            <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="学籍异动">
         </form>
     </li>
@@ -57,8 +59,9 @@
         当前用户：{{user.Sname}}
     </li>
     <li class="right">
-        <form action="/top/" method="post">
+        <form action="/tutor_before/" method="post">
             {% csrf_token %}
+            <input type="hidden" name="TUno" value={{user.Sno}}>
             <input type="submit" value="助教页面">
         </form>
     </li>

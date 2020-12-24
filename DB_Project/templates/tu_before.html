@@ -1,0 +1,30 @@
+{% include "s_nav.html" %}
+
+<p>可管理课程：</p>
+<table border="1">
+    <tr>
+        <th>课程名</th>
+        <th>开课院系</th>
+        <th>授课教师</th>
+        <th>学分</th>
+        <th>选课人数/容量</th>
+        <th>操作</th>
+    </tr>
+    {% for i in tuc_list %}
+    <tr>
+        <td>{{i.Cn}}</td>
+        <td>{{i.Dn}}</td>
+        <td>{{i.Tn}}</td>
+        <td>{{i.credit}}</td>
+        <td>{{i.s}}/{{i.v}}</td>
+        <td>
+            <form action="/tuc_detail/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="TUno" value={{user.Sno}}>
+                <input type="hidden" name="tc" value={{i.tid}}>
+                <input type="submit" value="进入管理页面">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

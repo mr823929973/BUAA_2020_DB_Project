@@ -1,0 +1,28 @@
+{% include "tuc_nav.html" %}
+
+<p>课程名称：{{C.Cname}}</p>
+<p>授课教师：{{T.Tname}}</p>
+<p>开课院系：{{D.Dname}}</p>
+<p>课程容量：{{se}}/{{C.v}}</p>
+<p>花名册：</p>
+<table border="1">
+    <tr>
+        <th>姓名</th>
+        <th>成绩</th>
+    </tr>
+    {% for i in s_list %}
+    <tr>
+        <td>{{i.Sn}}</td>
+        <td>
+            {% if i.end == True %}
+            {% if i.free == True %}
+            免修
+            {% endif %}
+            {{i.grade}}
+            {% else %}
+            未结课
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
