@@ -1,0 +1,30 @@
+{% include "tc_nav.html" %}
+
+<p>学生姓名：{{S.Sname}}</p>
+<p>历次作业得分：</p>
+<hr>
+{% for i in hwd_l %}
+<p>作业标题：{{i.title}}</p>
+<p>
+    作业得分：
+    {% if i.had == False %}
+    未提交
+    {% elif i.read == False %}
+    未评阅
+    {% else %}
+    {{i.point}}
+    {% endif %}
+</p>
+<hr>
+{% endfor %}
+<p>平时分：{{daily_p}}</p>
+<form action="/tc_judge_solve/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="sid" value={{S.Sno}}>
+    <input type="hidden" name="tc" value={{tid}}>
+    总分：
+    <input type="text" name="grade" placeholder="0-100">
+
+    <input type="submit" value="打分">
+
+</form>

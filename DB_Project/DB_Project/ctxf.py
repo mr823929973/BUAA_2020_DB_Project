@@ -74,6 +74,9 @@ def getTCinfo(tc, ctx):
     ctx['user'] = tc.Tno
     ctx['tid'] = tc.pk
 
+    hwl = HW.objects.filter(TC=tc)
+    ctx['hw_times'] = hwl.count()
+
     sl = SC.objects.filter(TC=tc)
     s_list = []
     for i in sl:
@@ -83,10 +86,20 @@ def getTCinfo(tc, ctx):
         one['free'] = i.free
         one['grade'] = i.grade
         one['Sno'] = i.Sno.Sno
+        one['dailyend'] = i.dailyend
+        one['daily'] = i.daily
+        one['hwtime'] = HWD.objects.filter(Sno=i.Sno, HW__TC=tc).count()
+        readHW = HWD.objects.filter(Sno=i.Sno, HW__TC=tc, read=True)
+        avg = 0
+        for j in readHW:
+            avg += j.point
+        if len(readHW) == 0:
+            one['avghw'] = 0
+        else:
+            one['avghw'] = avg / len(readHW)
         s_list.append(one)
     ctx['s_list'] = s_list
 
-    hwl = HW.objects.filter(TC=tc)
     hw_list = []
     for i in hwl:
         one = {}

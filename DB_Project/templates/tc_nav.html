@@ -27,9 +27,9 @@
     </li>
 
     <li class="left"> 
-        <form action="/t_add/" method="post">
+        <form action="/tc_judge/" method="post">
             {% csrf_token %}
-            <input type="hidden" name="Tno" value={{user.Tno}}>
+            <input type="hidden" name="tc" value={{tid}}>
             <input type="submit" value="打分">
         </form>
     </li>

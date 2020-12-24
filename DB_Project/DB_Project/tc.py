@@ -195,3 +195,60 @@ def read_do(request):
         elif who == 'teacher':
             ctxf.getTCinfo(hwd.HW.TC, ctx)
     return render(request, "tc_hw_detail.html", ctx)
+
+
+def tc_judge_do(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+
+        s = request.POST['sid']
+        s = Student.objects.filter(pk=s).first()
+
+        sc = SC.objects.filter(Sno=s, TC=tc).first()
+
+        hwl = HW.objects.filter(TC=tc)
+        hwd_l = []
+
+        for i in hwl:
+            one = {}
+            one['title'] = i.name
+            hwd = HWD.objects.filter(HW=i, Sno=s)
+            if len(hwd) == 0:
+                one['had'] = False
+                one['read'] = False
+                one['point'] = 0
+            else:
+                hwd = hwd.first()
+                one['had'] = True
+                one['read'] = hwd.read
+                one['point'] = hwd.point
+            hwd_l.append(one)
+
+        ctxf.getTCinfo(tc, ctx)
+        ctx['daily_p'] = sc.daily
+        ctx['S'] = s
+        ctx['hwd_l'] = hwd_l
+    return render(request, "tc_judge_do.html", ctx)
+
+
+def tc_judge_solve(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+
+        s = request.POST['sid']
+        s = Student.objects.filter(pk=s).first()
+        grade = request.POST['grade']
+
+        sc = SC.objects.filter(Sno=s, TC=tc).first()
+        sc.grade = grade
+        sc.end = True
+        sc.save()
+
+        ctx['m1'] = '打分完成！'
+
+        ctxf.getTCinfo(tc, ctx)
+    return render(request, "tc_judge.html", ctx)

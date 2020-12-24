@@ -6,7 +6,7 @@
 <p>课程容量：{{se}}/{{C.v}}</p>
 <br>
 <p>学生名称：{{S.Sname}}</p>
-<p>
+<p>成绩：
     {% if sc.end == True %}
     {% if sc.free == True %}
     免修
@@ -18,7 +18,7 @@
 </p>
 </table>
 
-{% if sc.free == False %}
+{% if sc.end == False %}
 <form action="/free_apply/" method="post">
     {% csrf_token %}
     <input type="hidden" name="sc" value={{scid}}>
@@ -26,10 +26,7 @@
     <textarea rows="5" cols="15" name="reason"></textarea><br>
     <input type="submit" value="申请免修">
 </form>
-{% endif %}
-
 <br>
-{% if sc.end == False %}
 <form action="/delete_c/" method="post">
     {% csrf_token %}
     <input type="hidden" name="s" value={{S.Sno}}>

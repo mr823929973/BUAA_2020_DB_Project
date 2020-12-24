@@ -168,3 +168,12 @@ def tuc_top(request):
         ctxf.getTCinfo(tc, ctx)
         ctxf.getSinfo(s, ctx)
     return render(request, "tuc_top.html", ctx)
+
+
+def tc_judge(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        ctxf.getTCinfo(tc, ctx)
+    return render(request, "tc_judge.html", ctx)
