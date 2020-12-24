@@ -99,6 +99,15 @@ def s_drop(request):
     return render(request, "s_drop.html", ctx)
 
 
+def s_remark_do(request):
+    ctx = {}
+    if request.POST:
+        sc = request.POST['sc']
+        sc = SC.objects.filter(pk=sc).first()
+        ctxf.getSCinfo(sc, ctx)
+    return render(request, "s_remark_do.html", ctx)
+
+
 def s_Dchange(request):
     ctx = {}
     if request.POST:
