@@ -1,0 +1,44 @@
+{% include "tuc_nav.html" %}
+
+<table border="1">
+    <tr>
+        <th>姓名</th>
+        <th>成绩</th>
+        <th>作业提交情况</th>
+        <th>已批阅作业平均分</th>
+        <th>平时分</th>
+    </tr>
+    {% for i in s_list %}
+    <tr>
+        <td>{{i.Sn}}</td>
+        <td>
+            {% if i.end == True %}
+            {% if i.free == True %}
+            免修
+            {% endif %}
+            {{i.grade}}
+            {% else %}
+            未结课
+            {% endif %}
+        </td>
+        <td>{{i.hwtime}}/{{hw_times}}</td>
+        <td>{{i.avghw}}</td>
+        <td>
+            {% if i.end == True %}
+            已结课
+            {% elif i.dailyend == True %}
+            {{i.daily}}
+            {% else %}
+            <form action="/tu_judge_do/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="sid" value={{i.Sno}}>
+                <input type="hidden" name="tc" value={{tid}}>
+                <input type="hidden" name="TUno" value={{user.Sno}}>
+                <input type="submit" value="打分">
+            </form>
+            {% endif %}
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>

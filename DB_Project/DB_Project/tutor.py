@@ -63,3 +63,71 @@ def delete_tutor(request):
         ctx['m1'] = '解任助教成功！'
         ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_top.html", ctx)
+
+
+def tu_judge_daily(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        tu = request.POST['TUno']
+        tu = Student.objects.filter(pk=tu).first()
+        ctxf.getTUinfo(tu, tc, ctx)
+    return render(request, "tuc_judge_daily.html", ctx)
+
+
+def tu_judge_do(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        tu = request.POST['TUno']
+        tu = Student.objects.filter(pk=tu).first()
+        s = request.POST['sid']
+        s = Student.objects.filter(pk=s).first()
+
+        hwl = HW.objects.filter(TC=tc)
+        hwd_l = []
+
+        for i in hwl:
+            one = {}
+            one['title'] = i.name
+            hwd = HWD.objects.filter(HW=i, Sno=s)
+            if len(hwd) == 0:
+                one['had'] = False
+                one['read'] = False
+                one['point'] = 0
+            else:
+                hwd = hwd.first()
+                one['had'] = True
+                one['read'] = hwd.read
+                one['point'] = hwd.point
+            hwd_l.append(one)
+
+        ctxf.getTUinfo(tu, tc, ctx)
+
+        ctx['S'] = s
+        ctx['hwd_l'] = hwd_l
+    return render(request, "tuc_judge_do.html", ctx)
+
+
+def tu_judge_solve(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        tu = request.POST['TUno']
+        tu = Student.objects.filter(pk=tu).first()
+        s = request.POST['sid']
+        s = Student.objects.filter(pk=s).first()
+        daily = request.POST['daily']
+
+        sc = SC.objects.filter(Sno=s, TC=tc).first()
+        sc.daily = daily
+        sc.dailyend = True
+        sc.save()
+
+        ctx['m1'] = '已给定平时分！'
+
+        ctxf.getTUinfo(tu, tc, ctx)
+    return render(request, "tuc_judge_daily.html", ctx)
