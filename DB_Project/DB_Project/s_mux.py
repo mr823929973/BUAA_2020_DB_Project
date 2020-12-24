@@ -140,3 +140,60 @@ def s_change_top(request):
         s = Student.objects.filter(Sno=s).first()
         ctxf.getSinfo(s, ctx)
     return render(request, "s_change_top.html", ctx)
+
+
+def sc_c_detail(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['user']
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        s = Student.objects.filter(Sno=s).first()
+
+        rs = Remark.objects.filter(SC__TC=tc)
+        rsT = Remark.objects.filter(SC__TC__Tno=tc.Tno)
+        ctx['rs'] = rs
+        rsn = len(rs)
+        rstn = len(rsT)
+        rr = {}
+        p0 = 0
+        p1 = 0
+        p2 = 0
+        p3 = 0
+        p4 = 0
+        p5 = 0
+        rec = 0
+        for i in rs:
+            p0 += i.p0
+            p1 += i.p1
+            p2 += i.p2
+            if i.rec:
+                rec += 1
+        for i in rsT:
+            p3 += i.p3
+            p4 += i.p4
+            p5 += i.p5
+        if rsn == 0:
+            rr['p0'] = 0
+            rr['p1'] = 0
+            rr['p2'] = 0
+            rr['rec'] = 0
+        else:
+            rr['p0'] = p0 / rsn
+            rr['p1'] = p1 / rsn
+            rr['p2'] = p2 / rsn
+            rr['rec'] = rec / rsn * 100
+        if rstn == 0:
+            rr['p3'] = 0
+            rr['p4'] = 0
+            rr['p5'] = 0
+        else:
+            rr['p3'] = p3 / rstn
+            rr['p4'] = p4 / rstn
+            rr['p5'] = p5 / rstn
+        ctx['rr'] = rr
+        ctx['Cname'] = tc.Cno.Cname
+        ctx['Tname'] = tc.Tno.Tname
+        ctx['Dname'] = tc.Dno.Dname
+        ctxf.getSinfo(s, ctx)
+    return render(request, "sc_c_detail.html", ctx)

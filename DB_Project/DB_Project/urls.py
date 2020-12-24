@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^s_drop/$', s_mux.s_drop),
     url(r'^s_remark_do/$', s_mux.s_remark_do),
     url(r'^s_remark_solve', sc.s_remark_solve),
+    url(r'^sc_c_detail', s_mux.sc_c_detail),
     url(r'^s_remark/$', s_mux.s_remark_top),
     url(r'^s_Dchange/$', s_mux.s_Dchange),
     url(r'^s_change_top/$', s_mux.s_change_top),

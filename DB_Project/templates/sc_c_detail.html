@@ -1,0 +1,41 @@
+{% include "sc_nav.html" %}
+
+<p>课程名称：{{Cname}}</p>
+<p>授课教师：{{Tname}}</p>
+<p>开课院系：{{Dname}}</p>
+
+<br>
+<hr>
+<p>课程评价：</p>
+<p>总体评价：{{rr.p0}}</p>
+<p>推荐率：{{rr.rec}}%</p>
+<p>专业性：{{rr.p1}}</p>
+<p>生动性：{{rr.p2}}</p>
+<hr>
+<p>教师评价：</p>
+<p>总体评价：{{rr.p3}}</p>
+<p>专业性：{{rr.p4}}</p>
+<p>责任心：{{rr.p5}}</p>
+<hr>
+<table border="1" class="altrowstable" width="1000px">
+    <tr>
+        <th>课程评价</th>
+        <th>教师评价</th>
+        <th>是否推荐</th>
+        <th>评论</th>
+    </tr>
+    {% for i in rs %}
+    <tr onmouseover="this.style.backgroundColor='rgba(46, 116, 173, 0.37)';" onmouseout="this.style.backgroundColor='rgb(0, 255, 255, 0.1)';">
+        <td>{{i.p0}}</td>
+        <td>{{i.p3}}</td>
+        <td>
+            {% if i.rec == True %}
+            是
+            {% else %}
+            否
+            {% endif %}
+        </td>
+        <td>{{i.r}}</td>
+    </tr>
+    {% endfor %}
+</table>

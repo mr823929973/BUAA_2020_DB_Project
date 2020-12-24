@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="{% static 'css/select.css' %}">
     <link rel="stylesheet" href="{% static 'css/input.css' %}">
     <script>
-        function myFunction(){
-        if("{{m1}}" != "")
-            alert("{{m1}}");
+        function myFunction() {
+            if ("{{m1}}" != "")
+                alert("{{m1}}");
         }
     </script>
 </head>
@@ -25,10 +25,10 @@
         J务管理系统
     </li>
     <li class="left">
-        <form action="/s_top/" method="post" class="top">
+        <form action="/s_course/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="首页" style="cursor:pointer">
+            <input type="submit" value="已选课程" background="transparent" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
@@ -38,13 +38,7 @@
             <input type="submit" value="选课" style="cursor:pointer">
         </form>
     </li>
-    <li class="left">
-        <form action="/s_course/" method="post" class="top">
-            {% csrf_token %}
-            <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="已选课程" background="transparent" style="cursor:pointer">
-        </form>
-    </li>
+
     <li class="left">
         <form action="/s_remark/" method="post" class="top">
             {% csrf_token %}
@@ -52,7 +46,7 @@
             <input type="submit" value="评教" style="cursor:pointer">
         </form>
     </li>
-    
+
     <li class="left">
         <form action="/s_change_top/" method="post" class="top">
             {% csrf_token %}
@@ -79,6 +73,5 @@
     </li>
 
 </ul>
-<p>提示信息：{{m1|default:"欢迎来到教务管理系统！"}}</p>
 </body>
 </html>
