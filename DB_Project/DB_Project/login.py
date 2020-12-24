@@ -51,7 +51,7 @@ def login(request):
                 if Drop.objects.filter(Sno=s1, read=True, accept=True):
                     ctx['out'] = s1.Sno
                     return render(request, "drop_success.html", ctx)
-                return render(request, "s_top.html", ctx)
+                return render(request, "s_course.html", ctx)
 
         elif 10000 <= no < 100000:
             teacher = Teacher.objects.filter(Tno=user)
