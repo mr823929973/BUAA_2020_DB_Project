@@ -12,9 +12,9 @@
 
 <ul class="nav">
     <li class="left">
-        <form action="/top/" method="post" class="top">
+        <form action="/s_top/" method="post" class="top">
             {% csrf_token %}
-            <input type="hidden" value={{Sno}}>
+            <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="首页">
         </form>
     </li>
@@ -35,12 +35,14 @@
     <li class="left">
         <form action="/top/" method="post" class="top">
             {% csrf_token %}
+            <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="评教">
         </form>
     </li>
     <li class="left">
-        <form action="/top/" method="post" class="top">
+        <form action="/s_change_top/" method="post" class="top">
             {% csrf_token %}
+            <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="学籍异动">
         </form>
     </li>
