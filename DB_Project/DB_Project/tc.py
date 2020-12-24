@@ -67,3 +67,33 @@ def add_HW(request):
             ctx['m1'] = '成功发布作业！'
         ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_lookHW.html", ctx)
+
+
+def free_solve(request):
+    ctx = {}
+    if request.POST:
+        fa = request.POST['pk']
+        fa = FreeApply.objects.filter(pk=fa).first()
+        result = request.POST['result']
+
+        if fa.read:
+            ctx['m1'] = '该免修申请已处理！'
+        elif result == 'yes':
+            fa.read = True
+            fa.accept = True
+            fa.save()
+            p = request.POST['point']
+            sc = fa.SC
+            sc.end = True
+            sc.grade = p
+            sc.free = True
+            sc.save()
+            ctx['m1'] = '已同意免修申请！'
+        else:
+            fa.read = True
+            fa.accept = False
+            fa.save()
+            ctx['m1'] = '已拒绝免修申请！'
+
+        ctxf.getTCinfo(fa.SC.TC, ctx)
+    return render(request, "tc_free.html", ctx)

@@ -1,7 +1,7 @@
 {% include "s_nav.html" %}
 
 <p>已选课程：</p>
-<table border="1"  class="altrowstable" width="1000px">
+<table border="1" class="altrowstable" width="1000px">
     <tr>
         <th>课程名</th>
         <th>授课老师</th>
@@ -13,8 +13,11 @@
         <td>{{i.Cn}}</td>
         <td>{{i.Tn}}</td>
         <td>
-            {% if i.end == True %}}
-            {{i.grade}}
+            {% if i.end == True %}
+            {% if i.free == True %}
+                免修
+            {% endif %}
+                {{i.grade}}
             {% else %}
             未结课
             {% endif %}

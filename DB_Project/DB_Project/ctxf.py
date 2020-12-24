@@ -47,6 +47,7 @@ def getSinfo(s, ctx):
         one['Tn'] = i.TC.Tno.Tname
         one['grade'] = i.grade
         one['end'] = i.end
+        one['free'] = i.free
         one['scid'] = i.pk
         had_Cno.append(i.TC.Cno.Cno)
         had.append(one)
@@ -93,6 +94,19 @@ def getTCinfo(tc, ctx):
     # for i in hwl:
     #     one = {}
     ctx['hw_list'] = hw_list
+
+    fl = FreeApply.objects.filter(SC__TC=tc)
+    free_list = []
+    for i in fl:
+        one = {}
+        one['free'] = i
+        one['pk'] = i.pk
+        one['Sn'] = i.SC.Sno.Sname
+        one['Dn'] = i.SC.TC.Dno.Dname
+        one['read'] = i.read
+        one['accept'] = i.accept
+        free_list.append(one)
+    ctx['free_list'] = free_list
 
 
 def getSCinfo(sc, ctx):

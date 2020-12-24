@@ -1,0 +1,17 @@
+{% include "tc_nav.html" %}
+
+<p>学生姓名：{{S.Sname}}</p>
+<p>所属院系：{{T.Tname}}</p>
+<hr>
+<p>申请理由：{{D.Dname}}</p>
+<p>处理意见</p>
+
+<form action="/free_solve/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="pk" value="{{freeid}}">
+    <input type="radio" name="result" value="yes" checked>同意
+    <input type="radio" name="result" value="no">拒绝
+    <br>
+    免修得分：<input type="text" name="point">
+    <input type="submit" value="处理">
+</form>

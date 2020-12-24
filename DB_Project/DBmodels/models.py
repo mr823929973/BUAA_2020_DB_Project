@@ -24,6 +24,7 @@ class TC(models.Model):
     Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
     s = models.IntegerField(default=0)
+    can = models.BooleanField(default=True)
 
 
 class Teacher(models.Model):
@@ -39,6 +40,7 @@ class SC(models.Model):
     grade = models.IntegerField(default=60)
     daily = models.IntegerField(default=60)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
+    can = models.BooleanField(default=True)
 
 
 class HW(models.Model):

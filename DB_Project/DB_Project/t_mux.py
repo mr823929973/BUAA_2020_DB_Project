@@ -25,6 +25,20 @@ def tc_detail(request):
     return render(request, "tc_top.html", ctx)
 
 
+def tc_free_do(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        ctxf.getTCinfo(tc, ctx)
+        pk = request.POST['apply']
+        pk = FreeApply.objects.filter(pk=pk).first()
+        ctx['scid'] = pk.SC.pk
+        ctx['freeid'] = pk.pk
+        ctx['S'] = pk.SC.Sno
+    return render(request, "tc_free_do.html", ctx)
+
+
 def tc_addHW(request):
     ctx = {}
     if request.POST:
