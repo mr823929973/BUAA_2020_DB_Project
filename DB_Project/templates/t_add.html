@@ -1,6 +1,7 @@
 
 {% include "t_nav.html" %}
 
+<div class="divleft">
 <p>开设课程：</p>
 <form action="/open_c/" method="post">
     {% csrf_token %}
@@ -19,7 +20,9 @@
     <input type="hidden" name="user" value={{user.Tno}}>
     <input type="submit" value="开课">
 </form>
+</div>
 <br>
+<div class="divright">
 <p>增加课程：</p>
 <form action="/add_c/" method="post">
     {% csrf_token %}
@@ -32,3 +35,4 @@
     <input type="hidden" name="user" value={{user.Tno}}>
     <input type="submit" value="增加课程">
 </form>
+</div>
