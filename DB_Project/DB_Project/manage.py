@@ -9,6 +9,8 @@ from . import ctxf
 
 
 def delete_all():
+    Drop.objects.all().delete()
+    Change.objects.all().delete()
     FreeApply.objects.all().delete()
     Tutor.objects.all().delete()
     HWD.objects.all().delete()

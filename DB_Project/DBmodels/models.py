@@ -23,6 +23,7 @@ class TC(models.Model):
     Tno = models.ForeignKey("Teacher", on_delete=models.CASCADE)
     Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
+    s = models.IntegerField(default=0)
 
 
 class Teacher(models.Model):
@@ -45,6 +46,7 @@ class HW(models.Model):
     name = models.CharField(max_length=30)
     question = models.CharField(max_length=50)
     times = models.IntegerField(default=0)
+    c = models.IntegerField(default=0)
 
 
 class HWD(models.Model):
@@ -88,3 +90,17 @@ class Remark(models.Model):
     r = models.CharField(max_length=50)
     rec = models.BooleanField(default=True)
 
+
+class Drop(models.Model):
+    Sno = models.ForeignKey("Student", on_delete=models.CASCADE)
+    read = models.BooleanField(default=False)
+    accept = models.BooleanField(default=False)
+    reason = models.CharField(max_length=30)
+
+
+class Change(models.Model):
+    Sno = models.ForeignKey("Student", on_delete=models.CASCADE)
+    Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
+    read = models.BooleanField(default=False)
+    accept = models.BooleanField(default=False)
+    reason = models.CharField(max_length=30)
