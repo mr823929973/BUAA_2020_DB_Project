@@ -33,7 +33,7 @@
         </form>
     </li>
     <li class="left">
-        <form action="/top/" method="post" class="top">
+        <form action="/s_remark/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="评教">

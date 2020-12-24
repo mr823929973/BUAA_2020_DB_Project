@@ -102,6 +102,15 @@ def s_Dchange(request):
     return render(request, "s_Dchange.html", ctx)
 
 
+def s_remark_top(request):
+    ctx = {}
+    if request.POST:
+        s = request.POST['Sno']
+        s = Student.objects.filter(Sno=s).first()
+        ctxf.getSinfo(s, ctx)
+    return render(request, "s_remark_top.html", ctx)
+
+
 def s_change_top(request):
     ctx = {}
     if request.POST:
