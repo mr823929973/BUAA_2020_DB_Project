@@ -104,3 +104,86 @@
 		transform: translate3d(0, 3.7em, 0);
 	}
 }
+
+.button-3d-1{
+    position: relative;
+    background: #2e74ad;
+    border: none;
+    color: white;
+    padding: 15px 24px;
+    font-size: 1.4rem;
+    outline: none;
+    box-shadow: -6px 6px 0 #1c5380;
+}
+
+.button-3d-1::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: -6px;
+    border: 6px solid transparent;
+    border-right: 6px solid #1c5380;
+    border-left-width: 0px;
+  }
+  
+  .button-3d-1::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    border: 6px solid transparent;
+    border-top: 6px solid #1c5380;
+    border-bottom-width: 0px;
+  }
+
+  .button-3d-1:active {
+    background: #2e74ad;
+    top: 3px;
+    left: -3px;
+    box-shadow: -3px 3px 0 #1c5380;
+  }
+
+  .button-3d-1:active::before {
+    border: 3px solid transparent;
+    border-right: 3px solid #1c5380;
+    border-left-width: 0px;
+    left: -3px;
+  }
+  
+  .button-3d-1:active::after {
+    border: 3px solid transparent;
+    border-top: 3px solid #1c5380;
+    border-bottom-width: 0px;
+    bottom: -3px;
+  }
+  
+/*备注框样式*/
+.txtb input,
+.txtb textarea {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    margin-top: 6px;
+    font-size: 18px;
+    color: #fff;
+}
+
+/*提交按钮样式*/
+.btn-up {
+    display: block;
+    /* background-color: rgba(156, 39, 176, .5); */
+    padding: 14px 0;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+}
