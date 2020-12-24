@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1905265_ohknpt3pw6.css">
     <title>J务管理系统</title>
+<script>
+function myFunction(){
+    if("{{m0}}" != "请输入账号！")
+    alert("用户名或密码错误!");
+}
+</script>
 </head>
-<body>
+<body onload="myFunction()">
 <div class="form-wrapper">
     <div class="header">
         J务管理系统
@@ -24,7 +30,7 @@
             </div>
         </div>
         <div class="action">
-            <input type="submit" class="btn" value="登 录" onclick = "return check()">
+            <input type="submit" class="btn" value="登 录" onclick = "return check()" style="cursor:pointer">
         </div>
         <script type = "text/javascript">  
             function checkpasswd(){
@@ -51,6 +57,6 @@
     </form>
 
 </div>
-<!--   <p>提示信息：{{ m0 }}</p> -->
+<p hidden>{{ m0 }}</p>
 </body>
 </html>

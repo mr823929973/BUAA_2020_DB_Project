@@ -28,9 +28,9 @@
     <textarea rows="10" cols="30" name="content">{{hw_content}}</textarea>
     <br>
     {% if had_time == 0 %}
-    <input type="submit" value="提交作业">
+    <input type="submit" value="提交作业" style="cursor:pointer">
     {% elif had_time < hw.times %}
-    <input type="submit" value="修改作业">
+    <input type="submit" value="修改作业" style="cursor:pointer">
     {% else %}
     已达提交上限！
     {% endif %}

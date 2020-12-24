@@ -34,7 +34,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="sid" value={{i.Sno}}>
                 <input type="hidden" name="tc" value={{tid}}>
-                <input type="submit" value="打分">
+                <input type="submit" value="打分" style="cursor:pointer">
             </form>
             {% else %}
             等待平时分

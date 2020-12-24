@@ -22,7 +22,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="user" value={{user.Sno}}>
                 <input type="hidden" name="tc" value={{i.tid}}>
-                <input type="submit" value="选课">
+                <input type="submit" value="选课" style="cursor:pointer">
             </form>
             {% else %}
             已满

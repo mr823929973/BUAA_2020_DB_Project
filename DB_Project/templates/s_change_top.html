@@ -5,13 +5,13 @@
     {% csrf_token %}
     <input type="hidden" name="Sno" value={{user.Sno}}>
     <input type="hidden" name="sc" value={{i.scid}}>
-    <input type="submit" value="转系申请" class="button-3d-1">
+    <input type="submit" value="转系申请" class="button-3d-1" style="cursor:pointer">
 </form>
 <br><br><br>
 <form action="/s_drop/" method="post">
     {% csrf_token %}
     <input type="hidden" name="Sno" value={{user.Sno}}>
     <input type="hidden" name="sc" value={{i.scid}}>
-    <input type="submit" value="退学申请" class="button-3d-1">
+    <input type="submit" value="退学申请" class="button-3d-1" style="cursor:pointer">
 </form>
 </p>

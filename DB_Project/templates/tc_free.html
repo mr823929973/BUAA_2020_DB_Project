@@ -19,7 +19,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="tc" value={{tid}}>
                 <input type="hidden" name="apply" value={{i.pk}}>
-                <input type="submit" value="处理">
+                <input type="submit" value="处理" style="cursor:pointer">
             </form>
             {% elif i.accept == True %}
             已同意

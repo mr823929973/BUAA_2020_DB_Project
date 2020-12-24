@@ -20,7 +20,7 @@
             <form action="/m_change_do/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="cid" value={{i.cid}}>
-                <input type="submit" value="处理">
+                <input type="submit" value="处理" style="cursor:pointer">
             </form>
             {% elif i.accept == True %}
             已同意
@@ -50,7 +50,7 @@
             <form action="/m_drop_do/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="did" value={{i.did}}>
-                <input type="submit" value="处理">
+                <input type="submit" value="处理" style="cursor:pointer">
             </form>
             {% elif i.accept == True %}
             已同意

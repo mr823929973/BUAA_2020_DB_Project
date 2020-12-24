@@ -5,14 +5,14 @@
         <form action="/sc_detail/" method="post">
             {% csrf_token %}
             <input type="hidden" name="sc" value={{scid}}>
-            <input type="submit" value="概览">
+            <input type="submit" value="概览" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
         <form action="/sc_lookHW/" method="post">
             {% csrf_token %}
             <input type="hidden" name="sc" value={{scid}}>
-            <input type="submit" value="作业列表">
+            <input type="submit" value="作业列表" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
