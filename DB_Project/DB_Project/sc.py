@@ -137,29 +137,19 @@ def change_apply(request):
     return render(request, "s_top.html", ctx)
 
 
-def hw_solve(request):
+def s_remark_solve(request):
     ctx = {}
     if request.POST:
         sc = request.POST['sc']
         sc = SC.objects.filter(pk=sc).first()
-        content = request.POST['content']
-        s = sc.Sno
-        hw = request.POST['hw']
-        hw = HW.objects.filter(pk=hw).first()
 
-        had = HWD.objects.filter(HW=hw, Sno=s)
+        p0 = request.POST['p0']
+        p1 = request.POST['p1']
+        p2 = request.POST['p2']
+        p3 = request.POST['p3']
+        p4 = request.POST['p4']
+        p5 = request.POST['p5']
 
-        if len(had) != 0:
-            had = had.first()
-            if had.had >= hw.times:
-                ctx['m1'] = '已达提交次数上限！'
-            else:
-                had.had = had.had + 1
-                had.content = content
-                had.save()
-                ctx['m1'] = '作业修改成功！'
-        else:
-            HWD.objects.create(Sno=s, HW=hw, content=content, had=1)
-            ctx['m1'] = '作业已提交！'
-        ctxf.getSCinfo(sc, ctx)
+        r = request.POST['r']
+
     return render(request, "sc_lookHW.html", ctx)
