@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>教务管理系统</title>
+    <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/sheet.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
@@ -21,41 +22,43 @@
         <form action="/s_top/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="首页">
+            <input type="submit" value="首页" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
         <form action="/s_select/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="选课">
+            <input type="submit" value="选课" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
         <form action="/s_course/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="已选课程" background="transparent">
+            <input type="submit" value="已选课程" background="transparent" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
         <form action="/s_remark/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="评教">
+            <input type="submit" value="评教" style="cursor:pointer">
         </form>
     </li>
+    
     <li class="left">
         <form action="/s_change_top/" method="post" class="top">
             {% csrf_token %}
             <input type="hidden" name="Sno" value={{user.Sno}}>
-            <input type="submit" value="学籍异动">
+            <input type="submit" value="学籍异动" style="cursor:pointer">
         </form>
     </li>
+
     <li class="right">
         <form action="/top/" method="post">
             {% csrf_token %}
-            <input type="submit" value="注销">
+            <input type="submit" value="注销" style="cursor:pointer">
         </form>
     </li>
     <li class="right">
@@ -65,13 +68,11 @@
         <form action="/tutor_before/" method="post">
             {% csrf_token %}
             <input type="hidden" name="TUno" value={{user.Sno}}>
-            <input type="submit" value="助教页面">
+            <input type="submit" value="助教页面" style="cursor:pointer">
         </form>
     </li>
 
 </ul>
 <p>提示信息：{{m1|default:"欢迎来到教务管理系统！"}}</p>
-
-
 </body>
 </html>
