@@ -95,6 +95,7 @@ def s_drop(request):
         one['Dname'] = s.Dno.Dname
 
         ctx['er'] = one
+        ctxf.getSinfo(s, ctx)
     return render(request, "s_drop.html", ctx)
 
 
@@ -110,6 +111,7 @@ def s_Dchange(request):
         dl = Department.objects.exclude(Dno=s.Dno.Dno)
         ctx['d_list'] = dl
         ctx['er'] = one
+        ctxf.getSinfo(s, ctx)
     return render(request, "s_Dchange.html", ctx)
 
 
