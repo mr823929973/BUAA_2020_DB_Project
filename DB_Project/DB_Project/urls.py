@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path
 from django.conf.urls import url
 
-from . import sth, login, sc, tc, manage, s_mux, t_mux
+from . import sth, login, sc, tc, manage, s_mux, t_mux, tutor
 
 urlpatterns = [
     url(r'^account/$', login.top),
@@ -53,5 +53,9 @@ urlpatterns = [
     url(r'^sc_detail/$', s_mux.sc_detail),
     url(r'^hw_detail/$', t_mux.tc_hw_detail),
     url(r'^add_HW/$', tc.add_HW),
+    url(r'^add_tutor/$', tutor.add_tutor),
+    url(r'^tutor_before/$', tutor.tu_before),
+    url(r'^delete_tutor/$', tutor.delete_tutor),
+    url(r'^tuc_detail/$', t_mux.tuc_top),
     url(r'.*', sth.top),
 ]

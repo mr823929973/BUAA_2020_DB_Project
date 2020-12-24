@@ -82,6 +82,7 @@ def getTCinfo(tc, ctx):
         one['Sn'] = i.Sno.Sname
         one['free'] = i.free
         one['grade'] = i.grade
+        one['Sno'] = i.Sno.Sno
         s_list.append(one)
     ctx['s_list'] = s_list
 
@@ -108,6 +109,13 @@ def getTCinfo(tc, ctx):
         one['accept'] = i.accept
         free_list.append(one)
     ctx['free_list'] = free_list
+
+    tutor = Tutor.objects.filter(TC=tc)
+    tutor_list = []
+    for i in tutor:
+        tutor_list.append(i.Sno.Sno)
+    ctx['tutor_list'] = tutor_list
+
 
 
 def getSCinfo(sc, ctx):

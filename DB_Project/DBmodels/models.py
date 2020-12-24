@@ -41,6 +41,7 @@ class SC(models.Model):
     daily = models.IntegerField(default=60)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
     can = models.BooleanField(default=True)
+    dailyend = models.BooleanField(default=False)
 
 
 class HW(models.Model):

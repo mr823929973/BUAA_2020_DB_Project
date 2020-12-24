@@ -122,3 +122,14 @@ def t_add(request):
         ctxf.getTinfo(t, ctx)
     return render(request, "t_add.html", ctx)
 
+
+def tuc_top(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        s = request.POST['Sno']
+        s = Student.objects.filter(pk=s).first()
+        ctxf.getTCinfo(tc, ctx)
+        ctxf.getSinfo(s, ctx)
+    return render(request, "tuc_top.html", ctx)

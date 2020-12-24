@@ -1,4 +1,4 @@
-{% include "t_nav.html" %}
+{% include "s_nav.html" %}
 
 <ul class="nav">
     <li>
@@ -22,20 +22,11 @@
             <input type="submit" value="作业列表">
         </form>
     </li>
-
     <li>
         <form action="/t_add/" method="post">
             {% csrf_token %}
             <input type="hidden" name="Tno" value={{user.Tno}}>
-            <input type="submit" value="打分">
-        </form>
-    </li>
-
-    <li>
-        <form action="/tc_free/" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="tc" value={{tid}}>
-            <input type="submit" value="免修审批">
+            <input type="submit" value="打平时分">
         </form>
     </li>
 </ul>

@@ -57,8 +57,9 @@
         当前用户：{{user.Sname}}
     </li>
     <li class="right">
-        <form action="/top/" method="post">
+        <form action="/tutor_before/" method="post">
             {% csrf_token %}
+            <input type="hidden" name="Sno" value={{user.Sno}}>
             <input type="submit" value="助教页面">
         </form>
     </li>
