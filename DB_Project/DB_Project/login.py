@@ -72,7 +72,7 @@ def login(request):
                 return render(request, "login.html", ctx)
             else:
                 ctxf.getManage(ctx)
-                return render(request, "m_top.html", ctx)
+                return render(request, "m_student.html", ctx)
 
     ctx['mo'] = '账号不存在！'
     return render(request, "login.html", ctx)
