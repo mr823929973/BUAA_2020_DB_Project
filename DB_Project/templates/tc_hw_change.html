@@ -3,21 +3,20 @@
 <form action="/add_HW/" method="post">
     {% csrf_token %}
     作业标题：<br>
-    <textarea rows="2" cols="15" name="name"></textarea>
+    <textarea rows="2" cols="15" name="name">{{hw.name}}</textarea>
     <br>
     作业内容：<br>
-    <textarea rows="5" cols="15" name="question"></textarea>
+    <textarea rows="5" cols="15" name="question">{{hw.question}}</textarea>
     <br>
     <input type="checkbox" name="ift" value="yes">
-    限制提交次数
-    <br>
-    <br>
+    限制提交次数<br><br>
     限制次数：
     <input type="input" name="times">
     <input type="hidden" name="tc" value={{tid}}>
-    <input type="hidden" name="type" value="add">
+    <input type="hidden" name="type" value="change">
+    <input type="hidden" name="hw" value={{hwid}}>
     <br><br>
-    <input type="submit" value="发布作业">
+    <input type="submit" value="修改作业信息">
 </form>
 
 

@@ -15,7 +15,10 @@
     <tr>
         <td>{{i.Sn}}</td>
         <td>
-            {% if i.end == True %}}
+            {% if i.end == True %}
+            {% if i.free == True %}
+            免修
+            {% endif %}
             {{i.grade}}
             {% else %}
             未结课

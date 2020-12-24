@@ -5,6 +5,14 @@ from django.views.decorators import csrf
 from DBmodels.models import *
 from django.http import HttpResponse
 from . import ctxf
+import random
+
+
+def getCno():
+    i = random.randint(0, 100000)
+    while len(Course.objects.filter(Cno=i)) != 0:
+        i = random.randint(0, 100000)
+    return i
 
 
 def add(request):
@@ -51,13 +59,27 @@ def add_HW(request):
         ift = request.POST.getlist('ift')
         tc = request.POST['tc']
         tc = TC.objects.filter(pk=tc).first()
+        doing = request.POST['type']
 
         conflict = HW.objects.filter(name=name, TC=tc)
 
-        if len(conflict) != 0:
+        if len(conflict) != 0 and doing == 'add':
             ctx['m1'] = '课内已有同名作业！'
             ctxf.getTCinfo(tc, ctx)
             return render(request, "tc_addHW.html", ctx)
+        elif doing == 'change':
+            hw = request.POST['hw']
+            hw = HW.objects.filter(pk=hw).first()
+            hw.name = name
+            hw.question = question
+            hw.ift = ift
+            if 'yes' in ift:
+                times = request.POST['times']
+                hw.times = times
+            else:
+                hw.times = 0
+            hw.save()
+            ctx['m1'] = '作业信息修改成功！'
         else:
             if 'yes' in ift:
                 times = request.POST['times']
@@ -65,6 +87,23 @@ def add_HW(request):
             else:
                 HW.objects.create(name=name, question=question, times=0, TC=tc)
             ctx['m1'] = '成功发布作业！'
+        ctxf.getTCinfo(tc, ctx)
+    return render(request, "tc_lookHW.html", ctx)
+
+
+def delete_hw(request):
+    ctx = {}
+    if request.POST:
+        tc = request.POST['tc']
+        tc = TC.objects.filter(pk=tc).first()
+        hw = request.POST['hw']
+        hw = HW.objects.filter(pk=hw)
+        if len(hw) == 0:
+            ctx['m1'] = '作业不存在！'
+        else:
+            hw = hw.first()
+            hw.delete()
+            ctx['m1'] = '作业删除成功！'
         ctxf.getTCinfo(tc, ctx)
     return render(request, "tc_lookHW.html", ctx)
 

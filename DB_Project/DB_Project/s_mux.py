@@ -43,16 +43,22 @@ def sc_lookHW(request):
         ctxf.getSCinfo(sc, ctx)
     return render(request, "sc_lookHW.html", ctx)
 
+
 def sc_doHW(request):
     ctx = {}
     if request.POST:
         hw = request.POST['hwid']
-        hw = HW.objects.filter(pk=hw).first()
+        hw = HW.objects.filter(pk=hw)
         s = request.POST['Sno']
         s = Student.objects.filter(pk=s).first()
         sc = request.POST['sc']
         sc = SC.objects.filter(pk=sc).first()
         ctxf.getSCinfo(sc, ctx)
+
+        if len(hw) == 0:
+            ctx['m1'] = '作业不存在！'
+            return render(request, "sc_lookHW.html", ctx)
+        hw = hw.first()
 
         ctx['hw'] = hw
         hwd = HWD.objects.filter(HW=hw, Sno=s)

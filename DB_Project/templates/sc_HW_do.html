@@ -7,7 +7,10 @@
     无限制
     {% endif %}</p>
 <p>已提交次数：{{had_time}}</p>
-<p> 得分：{% if hwd_read == False %}
+<p> 得分：
+    {% if had_time == 0 %}
+    未提交
+    {% elif hwd_read == False %}
     未评阅
     {% else %}
     {{hwd.point}}

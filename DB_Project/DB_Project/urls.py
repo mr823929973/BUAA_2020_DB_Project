@@ -40,6 +40,8 @@ urlpatterns = [
     url(r'^tc_lookHW/$', t_mux.tc_lookHW),
     url(r'^sc_doHW/$', s_mux.sc_doHW),
     url(r'^hw_solve/$', sc.hw_solve),
+    url(r'^delete_hw/$', tc.delete_hw),
+    url(r'^change_hw/$', t_mux.change_hw),
     url(r'^tc_free_do/$', t_mux.tc_free_do),
     url(r'^sc_lookHW/$', s_mux.sc_lookHW),
     url(r'^free_solve/$', tc.free_solve),
@@ -47,6 +49,7 @@ urlpatterns = [
     url(r'^tc_addHW/$', t_mux.tc_addHW),
     url(r'^tc_detail/$', t_mux.tc_detail),
     url(r'^sc_detail/$', s_mux.sc_detail),
+    url(r'^hw_detail/$', t_mux.tc_hw_detail),
     url(r'^add_HW/$', tc.add_HW),
     url(r'.*', sth.top),
 ]

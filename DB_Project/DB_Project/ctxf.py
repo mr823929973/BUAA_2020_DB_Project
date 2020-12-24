@@ -4,12 +4,6 @@ from DBmodels.models import *
 from django.http import HttpResponse
 import random
 
-def getCno():
-    i = random.randint(0, 100000)
-    while len(Course.objects.filter(Cno=i)) != 0:
-        i = random.randint(0, 100000)
-    return i
-
 
 def getTinfo(t, ctx):
     tc = TC.objects.filter(Tno=t.Tno)
@@ -86,13 +80,20 @@ def getTCinfo(tc, ctx):
         one = {}
         one['end'] = i.end
         one['Sn'] = i.Sno.Sname
+        one['free'] = i.free
+        one['grade'] = i.grade
         s_list.append(one)
     ctx['s_list'] = s_list
 
     hwl = HW.objects.filter(TC=tc)
-    hw_list = hwl
-    # for i in hwl:
-    #     one = {}
+    hw_list = []
+    for i in hwl:
+        one = {}
+        one['times'] = i.times
+        one['name'] = i.name
+        one['hwid'] = i.pk
+        one['done'] = HWD.objects.filter(HW=i).count()
+        hw_list.append(one)
     ctx['hw_list'] = hw_list
 
     fl = FreeApply.objects.filter(SC__TC=tc)

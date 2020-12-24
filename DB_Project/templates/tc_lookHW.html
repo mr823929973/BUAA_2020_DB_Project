@@ -18,8 +18,14 @@
             无上限
             {% endif %}
         </td>
-        <td>甚至连提交都还没写</td>
+        <td>{{i.done}}</td>
         <td>
+            <form action="/hw_detail/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="tc" value={{tid}}>
+                <input type="hidden" name="hw" value={{i.hwid}}>
+                <input type="submit" value="作业详情">
+            </form>
             批改、修改作业信息、删除作业，但是都还没写
         </td>
     </tr>

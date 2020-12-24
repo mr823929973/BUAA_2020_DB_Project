@@ -1,0 +1,72 @@
+{% include "tc_nav.html" %}
+
+<p>作业标题：{{hw.name}}</p>
+<p>提交次数上限：{% if hw.times != 0 %}
+    {{hw.times}}
+    {% else %}
+    无限制
+    {% endif %}</p>
+<p>已提交人数：{{done}}</p>
+
+<p>作业内容：</p>
+<p>{{hw.question}}</p>
+<form action="/delete_hw/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="hw" value={{hw.pk}}>
+    <input type="hidden" name="tc" value={{tid}}>
+    <input type="submit" value="删除作业">
+</form>
+<br>
+<form action="/change_hw/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="hw" value={{hw.pk}}>
+    <input type="hidden" name="tc" value={{tid}}>
+    <input type="submit" value="修改作业信息">
+</form>
+
+<hr>
+
+<table border="1">
+    <tr>
+        <th>学生姓名</th>
+        <th>提交次数</th>
+        <th>作业成绩</th>
+        <th>作业评阅</th>
+    </tr>
+    {% for i in s_hw_list %}
+    <tr>
+        <td>{{i.Sn}}</td>
+        <td>
+            {{i.had_time}}
+        </td>
+        <td>
+            {% if i.had_time == 0 %}
+            未提交
+            {% elif i.read == False %}
+            未评阅
+            {% else %}
+            {{i.point}}
+            {% endif %}
+        </td>
+        <td>
+            {% if i.had_time == 0 %}
+            尚未提交
+            {% elif i.read == False %}
+            <form action="/read_hw/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="tc" value={{tid}}>
+                <input type="hidden" name="hw" value={{i.hwid}}>
+                <input type="submit" value="评阅作业">
+            </form>
+            {% else %}
+            <form action="/read_hw/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="tc" value={{tid}}>
+                <input type="hidden" name="hw" value={{i.hwid}}>
+                <input type="submit" value="重新评阅">
+            </form>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
