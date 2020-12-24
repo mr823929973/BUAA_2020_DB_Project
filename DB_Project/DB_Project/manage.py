@@ -6,6 +6,12 @@ from DBmodels.models import *
 from django.http import HttpResponse
 
 from . import ctxf
+import hashlib
+
+
+def toMD5(s):
+    b = s.encode('gbk')
+    return hashlib.md5(b).hexdigest()
 
 
 def delete_all():
@@ -24,10 +30,10 @@ def delete_all():
 
 
 def initial():
-    Teacher.objects.create(Tno=99999, Tname='Tony')
+    Teacher.objects.create(Tno=99999, Tname='Tony', pw=toMD5(str(99999) + '123456'))
     Course.objects.create(Cno=119, Cname='海阳秧歌初级', credit=100, v=100)
     d = Department.objects.create(Dno=114514, Dname='阿兹卡班')
-    Student.objects.create(Sno=1919810, Sname='魔仙小月', Dno=d)
+    Student.objects.create(Sno=18373763, Sname='魔仙小月', Dno=d, pw=toMD5(str(18373763) + '123456'))
 
 
 def m_refresh(request):
@@ -41,7 +47,7 @@ def m_delete_all(request):
     if request.POST:
         delete_all()
         initial()
-        ctx['m1'] = '重 置 成 功！'
+        ctx['m1'] = '重置成功！'
     ctxf.getManage(ctx)
     return render(request, "m_top.html", ctx)
 
@@ -53,9 +59,9 @@ def m_add_student(request):
         Sname = request.POST['Sname']
         Dno = request.POST['Dno']
         Dno = Department.objects.filter(Dno=Dno).first()
-        Student.objects.create(Sno=Sno, Sname=Sname, Dno=Dno)
+        Student.objects.create(Sno=Sno, Sname=Sname, Dno=Dno, pw=toMD5(str(Sno) + '123456'))
         # SC.objects.create(Sno=s, Cno=t.Cno, TC=t)
-        ctx['m1'] = '开 始 坐 牢！'
+        ctx['m1'] = '成功录入学生！'
     ctxf.getManage(ctx)
     return render(request, "m_student.html", ctx)
 
@@ -65,9 +71,9 @@ def m_add_teacher(request):
     if request.POST:
         Tno = request.POST['Tno']
         Tname = request.POST['Tname']
-        Teacher.objects.create(Tno=Tno, Tname=Tname)
+        Teacher.objects.create(Tno=Tno, Tname=Tname, pw=toMD5(str(Tno) + '123456'))
         # SC.objects.create(Sno=s, Cno=t.Cno, TC=t)
-        ctx['m1'] = '录 入 老 师 成 功！'
+        ctx['m1'] = '成功录用老师！'
     ctxf.getManage(ctx)
     return render(request, "m_teacher.html", ctx)
 
@@ -79,7 +85,7 @@ def m_add_department(request):
         Dname = request.POST['Dname']
         Department.objects.create(Dno=Dno, Dname=Dname)
         # SC.objects.create(Sno=s, Cno=t.Cno, TC=t)
-        ctx['m1'] = '又 要 修 新 楼 了！'
+        ctx['m1'] = '成功开设院系！'
     ctxf.getManage(ctx)
     return render(request, "m_department.html", ctx)
 
