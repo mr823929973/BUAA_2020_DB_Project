@@ -135,3 +135,33 @@ def change_apply(request):
             ctx['m1'] = '转系申请已提交！'
         ctxf.getSinfo(s, ctx)
     return render(request, "s_top.html", ctx)
+
+
+def s_remark_solve(request):
+    ctx = {}
+    if request.POST:
+        sc = request.POST['sc']
+        sc = SC.objects.filter(pk=sc).first()
+
+        p0 = request.POST['p0']
+        p1 = request.POST['p1']
+        p2 = request.POST['p2']
+        p3 = request.POST['p3']
+        p4 = request.POST['p4']
+        p5 = request.POST['p5']
+
+        r = request.POST['r']
+
+        rec = request.POST['rec']
+
+        rl = Remark.objects.filter(SC=sc)
+
+        if len(rl) != 0:
+            ctx['m1'] = '不能重复评教！'
+        else:
+            ctx['m1'] = '成功提交评价！'
+            Remark.objects.create(SC=sc, p0=p0, p1=p1
+                                  , p4=p4, p3=p3, p2=p2
+                                  , p5=p5, rec=rec, r=r)
+        ctxf.getSCinfo(sc, ctx)
+    return render(request, "sc_top.html", ctx)

@@ -1,5 +1,3 @@
-
-
 {% include "s_nav.html" %}
 
 <ul class="nav2">
@@ -15,6 +13,13 @@
             {% csrf_token %}
             <input type="hidden" name="sc" value={{scid}}>
             <input type="submit" value="作业列表" style="cursor:pointer">
+        </form>
+    </li>
+    <li class="left">
+        <form action="/s_remark_do/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="sc" value={{scid}}>
+            <input type="submit" value="评教">
         </form>
     </li>
 </ul>

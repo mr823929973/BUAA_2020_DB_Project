@@ -7,11 +7,19 @@ from django.http import HttpResponse
 
 from . import ctxf
 import hashlib
+import re
 
 
 def toMD5(s):
     b = s.encode('gbk')
     return hashlib.md5(b).hexdigest()
+
+
+def valid(s):
+    s = str(s)
+    v = re.search('^[0-9]+$', s)
+    return v
+
 
 # 接收POST请求数据
 def top(request):
@@ -65,6 +73,6 @@ def login(request):
             else:
                 ctxf.getManage(ctx)
                 return render(request, "m_top.html", ctx)
-        else:
-            ctx['mo'] = '账号不存在！'
+
+    ctx['mo'] = '账号不存在！'
     return render(request, "login.html", ctx)

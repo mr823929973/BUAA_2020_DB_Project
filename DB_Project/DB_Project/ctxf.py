@@ -36,6 +36,8 @@ def getSinfo(s, ctx):
     can = []
     for i in sc:
         one = {}
+        r = Remark.objects.filter(SC=i)
+        one['hadR'] = len(r) != 0
         one['Cn'] = i.TC.Cno.Cname
         one['Cno'] = i.TC.Cno.Cno
         one['Tn'] = i.TC.Tno.Tname
@@ -140,6 +142,8 @@ def getSCinfo(sc, ctx):
     ctx['scid'] = sc.pk
     ctx['C'] = sc.TC.Cno
     ctx['se'] = SC.objects.filter(TC=sc.TC).count()
+    r = Remark.objects.filter(SC=sc)
+    ctx['hadR'] = len(r) != 0
 
     hwl = HW.objects.filter(TC=sc.TC)
     hw_list = []
