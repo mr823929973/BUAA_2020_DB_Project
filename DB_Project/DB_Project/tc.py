@@ -80,6 +80,8 @@ def add_HW(request):
                 hw.times = 0
             hw.save()
             ctx['m1'] = '作业信息修改成功！'
+            ctxf.getTCHWinfo(ctx, tc, hw)
+            return render(request, "tc_hw_detail.html", ctx)
         else:
             if 'yes' in ift:
                 times = request.POST['times']
@@ -136,3 +138,24 @@ def free_solve(request):
 
         ctxf.getTCinfo(fa.SC.TC, ctx)
     return render(request, "tc_free.html", ctx)
+
+
+def read_do(request):
+    ctx = {}
+    if request.POST:
+        hwd = request.POST['hwdid']
+        hwd = HWD.objects.filter(pk=hwd).first()
+        point = request.POST['point']
+        back = request.POST['back']
+        if ~hwd.read:
+            ctx['m1'] = '成功评阅作业！'
+        else:
+            ctx['m1'] = '成功修改作业评阅！'
+
+        hwd.back = back
+        hwd.point = point
+        hwd.read = True
+        hwd.save()
+        ctxf.getTCHWinfo(ctx, hwd.HW.TC, hwd.HW)
+        ctxf.getTCinfo(hwd.HW.TC, ctx)
+    return render(request, "tc_hw_detail.html", ctx)

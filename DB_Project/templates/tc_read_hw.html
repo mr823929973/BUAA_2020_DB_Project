@@ -1,0 +1,43 @@
+{% include "tc_nav.html" %}
+
+<p>作业标题：{{hw.name}}</p>
+<p>提交次数上限：{% if hw.times != 0 %}
+    {{hw.times}}
+    {% else %}
+    无限制
+    {% endif %}</p>
+<p>已提交次数：{{hwd.had}}</p>
+<p> 得分：
+    {% if hwd.read == False %}
+    未评阅
+    {% else %}
+    {{hwd.point}}
+    {% endif %}</p>
+<p>作业内容：</p>
+<p>{{hw.question}}</p>
+<hr>
+<p>作业评阅：</p>
+学生提交作业：<br>
+<p>{{hwd.content}}</p>
+<br>
+<form action="/hw_read_do/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="hwdid" value="{{hwd.pk}}">
+    分数：<br>
+    {% if hwd.read %}
+    <input type="text" name="point" value={{point}}>
+    {% else %}
+    <input type="text" name="point" placeholder="0-10">
+    {% endif %}
+
+    <br>
+    作业反馈：
+    <br>
+    <textarea rows="10" cols="30" name="back">{{back}}</textarea>
+    <br>
+    {% if hwd.read == True %}
+    <input type="submit" value="重新评阅">
+    {% else %}
+    <input type="submit" value="评阅">
+    {% endif %}
+</form>

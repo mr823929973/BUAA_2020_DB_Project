@@ -68,7 +68,8 @@ def sc_doHW(request):
             ctx['hw_content'] = ''
         else:
             ctx['hwd_read'] = hwd.first().read
-            ctx['hwd'] = hwd
+            ctx['hwd_point'] = hwd.first().point
             ctx['had_time'] = hwd.first().had
+            ctx['hwd'] = hwd.first()
             ctx['hw_content'] = hwd.first().content
-    return render(request, "sc_HW_do.html", ctx)
+    return render(request, "sc_HW_detail.html", ctx)

@@ -13,11 +13,12 @@
     {% elif hwd_read == False %}
     未评阅
     {% else %}
-    {{hwd.point}}
+    {{hwd_point}}
     {% endif %}</p>
 <p>作业内容：</p>
 <p>{{hw.question}}</p>
 <hr>
+{% if hwd_read == False %}
 <p>提交内容：</p>
 
 <form action="/hw_solve/" method="post">
@@ -34,3 +35,8 @@
     已达提交上限！
     {% endif %}
 </form>
+
+{% else %}
+<p>得分：{{hwd.point}}</p>
+<p>评阅反馈：{{hwd.back}}</p>
+{% endif %}

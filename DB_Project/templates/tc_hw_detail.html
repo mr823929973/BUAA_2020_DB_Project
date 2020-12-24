@@ -51,19 +51,17 @@
         <td>
             {% if i.had_time == 0 %}
             尚未提交
-            {% elif i.read == False %}
-            <form action="/read_hw/" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="tc" value={{tid}}>
-                <input type="hidden" name="hw" value={{i.hwid}}>
-                <input type="submit" value="评阅作业">
-            </form>
             {% else %}
             <form action="/read_hw/" method="post">
                 {% csrf_token %}
+                <input type="hidden" name="Sno" value={{i.Sno}}>
                 <input type="hidden" name="tc" value={{tid}}>
-                <input type="hidden" name="hw" value={{i.hwid}}>
+                <input type="hidden" name="hw" value={{hw.pk}}>
+                {% if i.read == False %}
+                <input type="submit" value="评阅作业">
+                {% else %}
                 <input type="submit" value="重新评阅">
+                {% endif %}
             </form>
             {% endif %}
         </td>

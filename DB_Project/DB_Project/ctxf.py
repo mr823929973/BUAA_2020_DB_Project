@@ -155,3 +155,26 @@ def getManage(ctx):
         d_list.append(one)
     ctx['d_list'] = d_list
     ctx['t'] = 'manager'
+
+
+def getTCHWinfo(ctx, tc, hw):
+    ctx['hw'] = hw
+    hwds = HWD.objects.filter(HW=hw)
+    ctx['done'] = hwds.count()
+
+    scs = SC.objects.filter(TC=tc)
+    s_hw_list = []
+    for i in scs:
+        one = {}
+        one['Sn'] = i.Sno.Sname
+        hwd_now = hwds.filter(Sno=i.Sno)
+        one['Sno'] = i.Sno.Sno
+        if len(hwd_now) == 0:
+            one['had_time'] = 0
+        else:
+            hwd_now = hwd_now.first()
+            one['had_time'] = hwd_now.had
+            one['read'] = hwd_now.read
+            one['point'] = hwd_now.point
+        s_hw_list.append(one)
+    ctx['s_hw_list'] = s_hw_list
