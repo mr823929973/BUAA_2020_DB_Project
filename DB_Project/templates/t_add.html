@@ -18,23 +18,29 @@
         {% endfor %}
     </select><br><br><br>
     <input type="hidden" name="user" value={{user.Tno}}>
-    <input type="submit" value="开课" class="button-3d-1">
+    <input type="submit" value="开课" class="button-3d-1" style="cursor:pointer">
 </form>
 </div>
 <br>
 <div class="divright">
 <p>增加课程：</p>
+<div class="form">
 <form action="/add_c/" method="post">
     {% csrf_token %}
     <div class="txtb">
-        <label for="">课程名字:</label>
+        课程名字:<br>
         <input type="text" name="Cname" placeholder="请输入课程名">
     </div><br>
-    课程学分：
-    <input type="text" name="credit" class><br>
-    课程容量：
-    <input type="text" name="v"><br><br>
+    <div class="txtb">
+        课程学分：<br>
+        <input type="text" name="credit" placeholder="请输入课程学分"><br>
+    </div><br>
+    <div class="txtb">
+        课程容量：<br>
+        <input type="text" name="v" placeholder="请输入课程容量">
+    </div><br>
     <input type="hidden" name="user" value={{user.Tno}}>
-    <input type="submit" value="增加课程" class="button-3d-1">
+    <input type="submit" value="增加课程" class="button-3d-1" style="cursor:pointer">
 </form>
+</div>
 </div>

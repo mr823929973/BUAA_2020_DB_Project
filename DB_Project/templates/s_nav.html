@@ -11,8 +11,14 @@
     <link rel="stylesheet" href="{% static 'css/column.css' %}">
     <link rel="stylesheet" href="{% static 'css/select.css' %}">
     <link rel="stylesheet" href="{% static 'css/input.css' %}">
+    <script>
+        function myFunction(){
+        if("{{m1}}" != "")
+            alert("{{m1}}");
+        }
+    </script>
 </head>
-<body>
+<body onload="myFunction()">
 
 <ul class="nav">
     <li class="left">

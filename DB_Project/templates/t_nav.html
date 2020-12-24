@@ -10,8 +10,14 @@
     <link rel="stylesheet" href="{% static 'css/column.css' %}">
     <link rel="stylesheet" href="{% static 'css/select.css' %}">
     <link rel="stylesheet" href="{% static 'css/input.css' %}">
+    <script>
+        function myFunction(){
+        if("{{m1}}" != "")
+            alert("{{m1}}");
+        }
+    </script>
 </head>
-<body>
+<body onload="myFunction()">
 
 <ul class="nav">
     <li class="pic">
@@ -21,14 +27,14 @@
         <form action="/t_top/" method="post">
             {% csrf_token %}
             <input type="hidden" name="Tno" value={{user.Tno}}>
-            <input type="submit" value="已开课程">
+            <input type="submit" value="已开课程" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
         <form action="/t_add/" method="post">
             {% csrf_token %}
             <input type="hidden" name="Tno" value={{user.Tno}}>
-            <input type="submit" value="开设/增加课程">
+            <input type="submit" value="开设/增加课程" style="cursor:pointer">
         </form>
     </li>
 <!--    <li class="left">-->
@@ -41,7 +47,7 @@
     <li class="right">
         <form action="/top/" method="post">
             {% csrf_token %}
-            <input type="submit" value="注销">
+            <input type="submit" value="注销" style="cursor:pointer">
         </form>
     </li>
     <li class="right">

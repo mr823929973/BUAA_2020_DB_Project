@@ -10,26 +10,32 @@
     <link rel="stylesheet" href="{% static 'css/column.css' %}">
     <link rel="stylesheet" href="{% static 'css/select.css' %}">
     <link rel="stylesheet" href="{% static 'css/input.css' %}">
+    <script>
+        function myFunction(){
+        if("{{m1}}" != "")
+            alert("{{m1}}");
+        }
+    </script>
 </head>
-<body>
+<body onload="myFunction()">
 
 <ul class="nav">
     <li class="left">
         <form action="/m_top/" method="post" class="top">
             {% csrf_token %}
-            <input type="submit" value="首页">
+            <input type="submit" value="首页" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
         <form action="/m_student/" method="post" class="top">
             {% csrf_token %}
-            <input type="submit" value="学生管理">
+            <input type="submit" value="学生管理" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
         <form action="/m_teacher/" method="post" class="top">
             {% csrf_token %}
-            <input type="submit" value="教师管理">
+            <input type="submit" value="教师管理" style="cursor:pointer">
         </form>
     </li>
     <li class="left">
@@ -53,7 +59,7 @@
     <li class="left">
         <form action="/m_apply/" method="post" class="top">
             {% csrf_token %}
-            <input type="submit" value="事务审批">
+            <input type="submit" value="事务审批" style="cursor:pointer">
         </form>
     </li>
     <li class="none">
@@ -62,7 +68,7 @@
     <li class="right">
         <form action="/top/" method="post">
             {% csrf_token %}
-            <input type="submit" value="注销">
+            <input type="submit" value="注销" style="cursor:pointer">
         </form>
     </li>
     <li class="right">

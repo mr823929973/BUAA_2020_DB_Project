@@ -24,13 +24,13 @@
     <input type="hidden" name="sc" value={{scid}}>
     申请理由：<br>
     <textarea rows="5" cols="15" name="reason"></textarea><br>
-    <input type="submit" value="申请免修">
+    <input type="submit" value="申请免修" style="cursor:pointer">
 </form>
 <br>
 <form action="/delete_c/" method="post">
     {% csrf_token %}
     <input type="hidden" name="s" value={{S.Sno}}>
     <input type="hidden" name="sc" value={{scid}}>
-    <input type="submit" value="退课">
+    <input type="submit" value="退课" style="cursor:pointer">
 </form>
 {% endif %}

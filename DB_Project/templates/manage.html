@@ -9,12 +9,12 @@
 <body>
 <form action="/top/" method="post">
     {% csrf_token %}
-    <input type="submit" value="返回首页">
+    <input type="submit" value="返回首页" style="cursor:pointer">
 </form>
 <br>
 <form action="/m_refresh/" method="post">
     {% csrf_token %}
-    <input type="submit" value="刷新当前页面">
+    <input type="submit" value="刷新当前页面" style="cursor:pointer">
 </form>
 
 {% if t == "manager" %}
@@ -22,7 +22,7 @@
 
 <form action="/m_delete_all/" method="post">
         {% csrf_token %}
-        <input type="submit" value="重置所有数据">
+        <input type="submit" value="重置所有数据" style="cursor:pointer">
     </form>
 <br>
 <form action="/m_add_student/" method="post">
@@ -37,7 +37,7 @@
         <option value={{i.Dno}}>{{i.Dname}}</option>
         {% endfor %}
     </select>
-    <input type="submit" value="录入学生">
+    <input type="submit" value="录入学生" style="cursor:pointer">
 </form>
 <br>
 <form action="/m_add_teacher/" method="post">
@@ -46,7 +46,7 @@
     <input type="text" name="Tno"><br>
     姓名：
     <input type="text" name="Tname">
-    <input type="submit" value="录用教师">
+    <input type="submit" value="录用教师" style="cursor:pointer">
 </form>
 <br>
 <form action="/m_add_department/" method="post">
@@ -55,7 +55,7 @@
     <input type="text" name="Dno"><br>
     系名：
     <input type="text" name="Dname">
-    <input type="submit" value="增加院系">
+    <input type="submit" value="增加院系" style="cursor:pointer">
 </form>
 
 {% else %}
