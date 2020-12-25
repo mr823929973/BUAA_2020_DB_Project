@@ -14,3 +14,59 @@ table {
 p.h1 {
     font-size: 25px;
 }
+
+/*table {*/
+/*    margin:0px auto;*/
+/*}*/
+
+/*table {*/
+/*    font-family: verdana,arial,sans-serif;*/
+/*    font-size:20px;*/
+/*    color:black;  !*font color*!*/
+/*    border-width: 2px;*/
+/*    border-color: rebeccapurple;*/
+/*    border-collapse: collapse;*/
+/*}*/
+
+/*table th {*/
+/*    border-width: 1px;*/
+/*    padding: 8px;*/
+/*    border-style: solid;*/
+/*    border-color: #a9c6c9;*/
+/*}*/
+/*table td {*/
+/*    border-width: 1px;*/
+/*    padding: 8px;*/
+/*    border-style: solid;*/
+/*    border-color: #a9c6c9;*/
+/*}*/
+/*.oddrowcolor{*/
+/*    background-color:#d4e3e5;*/
+/*}*/
+/*.evenrowcolor{*/
+/*    background-color:#c3dde0;*/
+/*}*/
+
+/*table form input{*/
+/*    font-size: 20px;*/
+/*    border:2px;*/
+/*    border-color: black;*/
+/*    border-radius:0;*/
+/*    border-bottom:none 1px solid;*/
+/*    box-shadow: 0px 0px 0px 0px;*/
+/*    outline-color: none ;*/
+/*    outline-style: none ;*/
+/*    outline-width: 0px ;*/
+/*    border: none ;*/
+/*    border-style: none ;*/
+/*    box-shadow: 0px 0px 0px 0px;*/
+/*    text-shadow: none ;*/
+/*    -webkit-box-shadow: 0 0 0 ;*/
+/*    -webkit-appearance: none ;*/
+/*    -webkit-user-select: text ;*/
+/*    outline-color: none ;*/
+/*    background-color: #2e74ad;*/
+/*    color:white;*/
+/*}*/
+
+

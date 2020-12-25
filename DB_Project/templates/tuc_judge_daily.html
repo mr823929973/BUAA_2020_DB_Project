@@ -9,7 +9,8 @@
         <th>平时分</th>
     </tr>
     {% for i in s_list %}
-    <tr>
+    <tr onmouseover="this.style.backgroundColor='rgba(46, 116, 173, 0.37)';"
+        onmouseout="this.style.backgroundColor='rgb(0, 255, 255, 0.1)';">
         <td>{{i.Sn}}</td>
         <td>
             {% if i.end == True %}

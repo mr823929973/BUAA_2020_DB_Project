@@ -10,6 +10,7 @@ table.altrowstable {
     border-color: rebeccapurple;
     border-collapse: collapse;
 }
+
 table.altrowstable th {
     border-width: 1px;
     padding: 8px;
