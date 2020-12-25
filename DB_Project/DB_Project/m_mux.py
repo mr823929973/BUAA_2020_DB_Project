@@ -18,6 +18,7 @@ def m_department(request):
     ctx = {}
     # if request.POST:
     #     power = request.
+    ctxf.getManage(ctx)
     return render(request, "m_department.html", ctx)
 
 
@@ -25,7 +26,16 @@ def m_teacher(request):
     ctx = {}
     # if request.POST:
     #     power = request.
+    ctxf.getManage(ctx)
     return render(request, "m_teacher.html", ctx)
+
+
+def m_course(request):
+    ctx = {}
+    # if request.POST:
+    #     power = request.
+    ctxf.getManage(ctx)
+    return render(request, "m_course.html", ctx)
 
 
 def m_student(request):
@@ -54,6 +64,7 @@ def m_drop_do(request):
         ctx['Dn'] = d.Sno.Dno.Dname
         ctx['reason'] = d.reason
         ctx['did'] = d.pk
+        ctxf.getManage(ctx)
     return render(request, "m_drop_do.html", ctx)
 
 
@@ -68,4 +79,5 @@ def m_change_do(request):
         ctx['Dn'] = c.Sno.Dno.Dname
         ctx['reason'] = c.reason
         ctx['cid'] = c.pk
+        ctxf.getManage(ctx)
     return render(request, "m_change_do.html", ctx)

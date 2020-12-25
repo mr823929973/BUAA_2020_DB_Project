@@ -25,7 +25,6 @@ class TC(models.Model):
     Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
     s = models.IntegerField(default=0)
-    can = models.BooleanField(default=True)
 
 
 class Teacher(models.Model):
@@ -42,7 +41,6 @@ class SC(models.Model):
     grade = models.IntegerField(default=60)
     daily = models.IntegerField(default=60)
     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
-    can = models.BooleanField(default=True)
     dailyend = models.BooleanField(default=False)
 
 
@@ -76,13 +74,13 @@ class FreeApply(models.Model):
     reason = models.CharField(max_length=30)
 
 
-class Plan(models.Model):
-    Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
-
-
-class PlanD(models.Model):
-    Pno = models.ForeignKey("Plan", on_delete=models.CASCADE)
-    Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
+# class Plan(models.Model):
+#     Dno = models.ForeignKey("Department", on_delete=models.CASCADE)
+#
+#
+# class PlanD(models.Model):
+#     Pno = models.ForeignKey("Plan", on_delete=models.CASCADE)
+#     Cno = models.ForeignKey("Course", on_delete=models.CASCADE)
 
 
 class Remark(models.Model):

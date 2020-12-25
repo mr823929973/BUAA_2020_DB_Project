@@ -21,4 +21,26 @@
     </div><br><br>
     <input type="submit" value="录入学生" class="button-3d-1" style="cursor:pointer">
 </form>
-
+<br>
+<p class="h1">学生信息：</p>
+<table border="1" class="altrowstable" width="1000px">
+    <tr>
+        <th>学生名称</th>
+        <th>所属院系</th>
+        <th>选课数量</th>
+        <th>已修得学分</th>
+        <th>加权平均分</th>
+    </tr>
+    {% for i in s_table %}
+    <tr onmouseover="this.style.backgroundColor='rgba(46, 116, 173, 0.37)';"
+        onmouseout="this.style.backgroundColor='rgb(0, 255, 255, 0.1)';">
+        <td>{{i.Sname}}</td>
+        <td>{{i.Dname}}</td>
+        <td>
+            {{i.end}}/{{i.se}}
+        </td>
+        <td>{{i.cre}}</td>
+        <td>{{i.p}}</td>
+    </tr>
+    {% endfor %}
+</table>

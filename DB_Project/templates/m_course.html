@@ -1,0 +1,29 @@
+{% include "m_nav.html" %}
+<p class="h1">课程信息：</p>
+<table border="1" class="altrowstable" width="1000px">
+    <tr>
+        <th>课程名称</th>
+        <th>所属院系</th>
+        <th>授课老师</th>
+        <th>选修人数</th>
+        <th>平均分</th>
+        <th>挂科率</th>
+        <th>良好率</th>
+        <th>优秀率</th>
+    </tr>
+    {% for i in c_table %}
+    <tr onmouseover="this.style.backgroundColor='rgba(46, 116, 173, 0.37)';"
+        onmouseout="this.style.backgroundColor='rgb(0, 255, 255, 0.1)';">
+        <td>{{i.Cname}}</td>
+        <td>{{i.Dname}}</td>
+        <td>{{i.Tname}}</td>
+        <td>
+            {{i.end}}/{{i.se}}
+        </td>
+        <td>{{i.p0}}</td>
+        <td>{{i.r1}}%</td>
+        <td>{{i.r2}}%</td>
+        <td>{{i.r3}}%</td>
+    </tr>
+    {% endfor %}
+</table>

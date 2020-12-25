@@ -205,6 +205,92 @@ def getManage(ctx):
 
     ctx['t'] = 'manager'
 
+    te = Teacher.objects.all()
+    t_table = []
+    for i in te:
+        one = {}
+        one['open'] = TC.objects.filter(Tno=i).count()
+        one['Tname'] = i.Tname
+        re = Remark.objects.filter(SC__TC__Tno=i)
+        a = 0
+        for j in re:
+            a += j.p3
+        if len(re) == 0:
+            a = 0
+        else:
+            a = a/len(re)
+        one['re'] = a
+        t_table.append(one)
+    ctx['t_table'] = t_table
+
+    st = Student.objects.all()
+    s_table = []
+    for i in st:
+        one = {}
+        one['Sname'] = i.Sname
+        one['Dname'] = i.Dno.Dname
+        selected = SC.objects.filter(Sno=i)
+        se = len(selected)
+        end = 0
+        p = 0
+        cre = 0
+        for j in selected:
+            if j.end:
+                end += 1
+                cre += j.TC.Cno.credit
+                p += j.grade * j.TC.Cno.credit
+        if cre == 0:
+            one['p'] = 0
+        else:
+            one['p'] = p / cre
+        one['se'] = se
+        one['end'] = end
+        one['cre'] = cre
+        s_table.append(one)
+    sorted(s_table, key=lambda x: (x['cre']))
+    ctx['s_table'] = s_table
+
+    co = TC.objects.all()
+    c_table = []
+
+    for i in co:
+        one = {}
+        one['Cname'] = i.Cno.Cname
+        one['Tname'] = i.Tno.Tname
+        one['Dname'] = i.Dno.Dname
+        sec = SC.objects.filter(TC = i)
+        se = len(sec)
+        end = 0
+        p0 = 0
+        r1 = 0
+        r2 = 0
+        r3 = 0
+        for j in sec:
+            if j.end:
+                end += 1
+                p0 += j.grade
+                if j.grade < 60:
+                    r1 += 1
+                elif 60 <= j.grade < 80:
+                    r2 += 1
+                else:
+                    r3 += 1
+        if end == 0:
+            one['p0'] = 0
+            one['r1'] = 0
+            one['r2'] = 0
+            one['r3'] = 0
+        else:
+            one['p0'] = p0 / end
+            one['r1'] = r1 / end * 100
+            one['r2'] = r2 / end * 100
+            one['r3'] = r3 / end * 100
+        one['se'] = se
+        one['end'] = end
+
+        c_table.append(one)
+
+    ctx['c_table'] = c_table
 
 def getTCHWinfo(ctx, tc, hw):
     ctx['hw'] = hw

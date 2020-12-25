@@ -13,3 +13,22 @@
     </div><br><br>
     <input type="submit" value="录用教师" class="button-3d-1" style="cursor:pointer">
 </form>
+<br>
+<p class="h1">教师信息：</p>
+<table border="1" class="altrowstable" width="1000px">
+    <tr>
+        <th>教师名称</th>
+        <th>开课数量</th>
+        <th>总体评价</th>
+    </tr>
+    {% for i in t_table %}
+    <tr onmouseover="this.style.backgroundColor='rgba(46, 116, 173, 0.37)';"
+        onmouseout="this.style.backgroundColor='rgb(0, 255, 255, 0.1)';">
+        <td>{{i.Tname}}</td>
+        <td>{{i.open}}</td>
+        <td>
+            {{i.re}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
