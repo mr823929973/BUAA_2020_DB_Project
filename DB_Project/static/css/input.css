@@ -196,15 +196,34 @@ form .txtb {
     color: black;
 }
 
-/*提交按钮样式*/
-.btn-up {
-    display: block;
-    /* background-color: rgba(156, 39, 176, .5); */
-    padding: 14px 0;
-    color: #fff;
-    cursor: pointer;
-    margin-top: 8px;
-    width: 100%;
-    border: 1px solid #aaa;
+form .txtc {
+    left: 1000px;
+    border: 1px solid rgba(20, 20, 156, 0.452);
+    padding: 12px 18px;
     border-radius: 10px;
+    border-width: 5px;
+    width: 420px;
+    margin:0px auto;
+}
+
+.txtc label {
+    display: block;
+    text-align: left;
+    color: rgba(20, 20, 156, 0.452);
+    font-size: 14px;
+}
+
+
+/*备注框样式*/
+.txtc input,
+.txtc textarea {
+    width: 420px;
+    background: none;
+    border-radius: none;
+    border-width: none;
+    border-color: rgb(0, 255, 255, 0.1);
+    outline: none;
+    margin-top: 6px;
+    font-size: 18px;
+    color: black;
 }

@@ -2,20 +2,23 @@
 
 <form action="/m_add_student/" method="post">
     {% csrf_token %}
-    <div class="txtb">
-        学号：<br>
+    <br><br>
+    <div class="txtc">
+        学号<br>
         <input type="text" name="Sno" placeholder="请输入学生学号"><br>
-    </div>
-    <div class="txtb">
-        姓名：<br>
+    </div><br>
+    <div class="txtc">
+        姓名<br>
         <input type="text" name="Sname" placeholder="请输入学生姓名"><br>
-    </div>
-    系：
+    </div><br>
+    <div class="txtc">
+    系<br>
     <select name="Dno">
         {% for i in d_list %}
         <option value={{i.Dno}}>{{i.Dname}}</option>
         {% endfor %}
-    </select><br><br><br>
+    </select><br>
+    </div><br><br>
     <input type="submit" value="录入学生" class="button-3d-1" style="cursor:pointer">
 </form>
 
