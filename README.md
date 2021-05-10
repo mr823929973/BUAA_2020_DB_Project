@@ -20,11 +20,3 @@ python manage.py migrate
 ```
 python manage.py runserver 0.0.0.0:80
 ```
-
-```mysql
-CREATE TRIGGER TCdeleted AFTER DELETE ON dbmodels_sc FOR EACH ROW 
-	UPDATE dbmodels_tc SET s = (SELECT COUNT(*) FROM dbmodels_sc 
-                                WHERE tc_id = NEW.tc_id) WHERE id = NEW.tc_id;
-
-```
-
